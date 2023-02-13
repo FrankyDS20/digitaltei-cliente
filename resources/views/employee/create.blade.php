@@ -15,7 +15,7 @@
             {{ session('error') }}
         </div>
     @endif
-<form method="post" action="{{route('empleados.store')}}"  enctype="multipart/form-data">
+<form method="post" action="{{route('employee.store')}}"  enctype="multipart/form-data">
     @csrf
     <div class="flex flex-wrap">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -204,7 +204,7 @@
         type="submit">
             Registrar
         </button>
-        <a  href="{{(route('empleados.index'))}}" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        <a  href="{{(route('employee.index'))}}" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             regresar
         </a>
     </div>

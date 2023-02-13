@@ -5,7 +5,7 @@
     <div class="grid grid-cols-6">
         <h2 class="col-span-6 md:col-span-3 my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             {{$titulo}}
-            <a href="{{route('employee.create')}}"
+            <a href="{{route('product.create')}}"
                 class=" items-center mt-3 justify-between px-4 py-2 text-sm font-semibold leading-5 text-white transition-colors duration-150 bg-emerald-500 border border-transparent rounded-lg active:bg-emerald-500 hover:bg-emerald-700 focus:outline-none focus:shadow-outline-emerald">
                 Nuevo
                 
@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    @foreach($employee as $value)
+                    @foreach($product as $value)
                     <tr class="text-gray-700 dark:text-gray-400">
                         <td class="px-4 py-3">
                             <div class="flex items-center text-sm">
@@ -85,13 +85,13 @@
                             @endif
                         </td>
                         <td class="px-4 py-3 text-sm text-center no-export">
-                            <a href ="{{route('employee.edit',$value)}}"  style=" border: none;" 
+                            <a href ="{{route('product.edit',$value)}}"  style=" border: none;" 
                             class="p-2 focus:outline-none focus:shadow-outline-gray
                              editar text-sm font-medium leading-5 text-gray-700
                               hover:text-gray-900 transition-colors duration-150
                                dark:text-gray-400 rounded"><i class="fas fa-edit"></i></a>
                             
-                            {!! Form::open(['route' => ['employee.destroy', $value], 'method' => 'delete']) !!}
+                            {!! Form::open(['route' => ['product.destroy', $value], 'method' => 'delete']) !!}
                             @csrf
                             <button type="submit" class="p-2 focus:outline-none focus:shadow-outline-gray eliminar 
                             text-sm font-medium leading-5 text-gray-700 hover:text-gray-900 transition-colors duration-150 dark:text-gray-400 rounded">

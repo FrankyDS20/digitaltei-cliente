@@ -1,0 +1,656 @@
+warning: in the working copy of 'app/Http/Controllers/EmployeeController.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/Providers/AppServiceProvider.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'database/migrations/2023_02_07_173848_create_employees_table.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'database/seeders/DatabaseSeeder.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'database/seeders/UserSeeder.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'routes/web.php', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/app/Http/Controllers/Compras.php b/app/Http/Controllers/Compras.php[m
+[1mdeleted file mode 100644[m
+[1mindex da98c84..0000000[m
+[1m--- a/app/Http/Controllers/Compras.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,10 +0,0 @@[m
+[31m-<?php[m
+[31m-[m
+[31m-namespace App\Http\Controllers;[m
+[31m-[m
+[31m-use Illuminate\Http\Request;[m
+[31m-[m
+[31m-class Compras extends Controller[m
+[31m-{[m
+[31m-    //[m
+[31m-}[m
+[1mdiff --git a/app/Http/Controllers/EmployeeController.php b/app/Http/Controllers/EmployeeController.php[m
+[1mindex bbc59b3..f0a61f8 100644[m
+[1m--- a/app/Http/Controllers/EmployeeController.php[m
+[1m+++ b/app/Http/Controllers/EmployeeController.php[m
+[36m@@ -33,13 +33,13 @@[m [mpublic function edit(Employee $employee)[m
+         $empresa = $this->empresa;[m
+         return view('employee.edit',compact('employee','jobs','titulo','empresa'));[m
+     }[m
+[31m-    public function created()[m
+[32m+[m[32m    public function create()[m
+     {[m
+         $jobs = Job::all();[m
+        [m
+         $titulo = "Nuevo empleado";[m
+         $empresa = $this->empresa;[m
+[31m-        return view('employee.created',compact('titulo','jobs','empresa'));[m
+[32m+[m[32m        return view('employee.create',compact('titulo','jobs','empresa'));[m
+     }[m
+     public function store(StoreEmployee $request)[m
+     {[m
+[36m@@ -58,7 +58,7 @@[m [mpublic function store(StoreEmployee $request)[m
+             $data['avatar'] = 'images/default.png';[m
+         }[m
+         if (Employee::create($data)) {[m
+[31m-            return redirect()->route('empleados.index');[m
+[32m+[m[32m            return redirect()->route('employee.index');[m
+         } else {[m
+             unlink($ruta);[m
+             return redirect()->back()->with('error', 'No se pudo registrar el registro.');[m
+[36m@@ -84,7 +84,7 @@[m [mpublic function update(UpdateEmployee $request, Employee $employee)[m
+             $data['file'] = $employee->file;[m
+         }[m
+         if ($employee->update($data)) {[m
+[31m-            return redirect()->route('empleados.index');[m
+[32m+[m[32m            return redirect()->route('employee.index');[m
+         } else {[m
+             unlink($ruta);[m
+             return redirect()->back()->with('error', 'No se pudo actualizar el registro.');[m
+[36m@@ -95,33 +95,8 @@[m [mpublic function update(UpdateEmployee $request, Employee $employee)[m
+     public function destroy(Employee $employee)[m
+     {[m
+         $employee->delete();[m
+[31m-        return redirect()->route('empleados.index');[m
+[32m+[m[32m        return redirect()->route('employee.index');[m
+     }[m
+[31m-    public function validation($request){[m
+[31m-       return $request->validate([[m
+[31m-            'name' => 'required',[m
+[31m-            'lastname' => 'required',[m
+[31m-            'document' => 'required|unique:employees',[m
+[31m-            'email' => 'required|unique:employees',[m
+[31m-            'birthday_date' => 'required',[m
+[31m-            'gender' => 'required',[m
+[31m-            'phone' => 'required|unique:employees',[m
+[31m-            'jobs_id' => 'required',[m
+[31m-            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg'[m
+[31m-        ]);[m
+[31m-    }[m
+[31m-    public function validationUp($request){[m
+[31m-        return $request->validate([[m
+[31m-             'name' => 'required',[m
+[31m-             'lastname' => 'required',[m
+[31m-             'document' => 'required|unique:employees,document,'.$request->id,[m
+[31m-             'email' => 'required|unique:employees,email,'.$request->id,[m
+[31m-             'birthday_date' => 'required',[m
+[31m-             'gender' => 'required',[m
+[31m-             'phone' => 'required|unique:employees,phone,'.$request->id,[m
+[31m-             'jobs_id' => 'required',[m
+[31m-             'avatar' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048'[m
+[31m-         ]);[m
+[31m-     }[m
+[32m+[m[41m  [m
+ }[m
+ [m
+[1mdiff --git a/app/Http/Controllers/Productos.php b/app/Http/Controllers/Productos.php[m
+[1mdeleted file mode 100644[m
+[1mindex 4cd4951..0000000[m
+[1m--- a/app/Http/Controllers/Productos.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,10 +0,0 @@[m
+[31m-<?php[m
+[31m-[m
+[31m-namespace App\Http\Controllers;[m
+[31m-[m
+[31m-use Illuminate\Http\Request;[m
+[31m-[m
+[31m-class Productos extends Controller[m
+[31m-{[m
+[31m-    //[m
+[31m-}[m
+[1mdiff --git a/app/Http/Controllers/Proveedores.php b/app/Http/Controllers/Proveedores.php[m
+[1mdeleted file mode 100644[m
+[1mindex 82e7727..0000000[m
+[1m--- a/app/Http/Controllers/Proveedores.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,10 +0,0 @@[m
+[31m-<?php[m
+[31m-[m
+[31m-namespace App\Http\Controllers;[m
+[31m-[m
+[31m-use Illuminate\Http\Request;[m
+[31m-[m
+[31m-class Proveedores extends Controller[m
+[31m-{[m
+[31m-    //[m
+[31m-}[m
+[1mdiff --git a/app/Http/Controllers/Ventas.php b/app/Http/Controllers/Ventas.php[m
+[1mdeleted file mode 100644[m
+[1mindex 1ff2011..0000000[m
+[1m--- a/app/Http/Controllers/Ventas.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,10 +0,0 @@[m
+[31m-<?php[m
+[31m-[m
+[31m-namespace App\Http\Controllers;[m
+[31m-[m
+[31m-use Illuminate\Http\Request;[m
+[31m-[m
+[31m-class Ventas extends Controller[m
+[31m-{[m
+[31m-    //[m
+[31m-}[m
+[1mdiff --git a/app/Providers/AppServiceProvider.php b/app/Providers/AppServiceProvider.php[m
+[1mindex ee8ca5b..aae2549 100644[m
+[1m--- a/app/Providers/AppServiceProvider.php[m
+[1m+++ b/app/Providers/AppServiceProvider.php[m
+[36m@@ -1,7 +1,7 @@[m
+ <?php[m
+ [m
+ namespace App\Providers;[m
+[31m-[m
+[32m+[m[32muse Illuminate\Support\Facades\Route;[m
+ use Illuminate\Support\ServiceProvider;[m
+ [m
+ class AppServiceProvider extends ServiceProvider[m
+[36m@@ -23,6 +23,11 @@[m [mpublic function register()[m
+      */[m
+     public function boot()[m
+     {[m
+[31m-        //[m
+[32m+[m[32m        Route::resourceVerbs([[m
+[32m+[m[32m            'create' => 'crear',[m
+[32m+[m[32m            'edit' => 'editar',[m
+[32m+[m[32m        ]);[m
+[32m+[m[41m     [m
+[32m+[m[32m        // ...[m
+     }[m
+ }[m
+[1mdiff --git a/database/migrations/2023_02_07_173848_create_employees_table.php b/database/migrations/2023_02_07_173848_create_employees_table.php[m
+[1mindex c45b01c..5569a4b 100644[m
+[1m--- a/database/migrations/2023_02_07_173848_create_employees_table.php[m
+[1m+++ b/database/migrations/2023_02_07_173848_create_employees_table.php[m
+[36m@@ -32,7 +32,7 @@[m [mpublic function up()[m
+             $table->foreign('jobs_id')->references('id')->on('jobs');[m
+         });[m
+     }[m
+[31m-    [m
+[32m+[m
+     /**[m
+      * Reverse the migrations.[m
+      *[m
+[1mdiff --git a/database/seeders/DatabaseSeeder.php b/database/seeders/DatabaseSeeder.php[m
+[1mindex a4f6e23..8c9ff8d 100644[m
+[1m--- a/database/seeders/DatabaseSeeder.php[m
+[1m+++ b/database/seeders/DatabaseSeeder.php[m
+[36m@@ -21,11 +21,11 @@[m [mpublic function run()[m
+         $this->call(User_typeSeeder::class);[m
+         $this->call(UserSeeder::class);[m
+         $this->call(AccessSeeder::class);[m
+[32m+[m[32m        $this->call(BrandsSeeder::class);[m
+[32m+[m[32m        $this->call(CategoriesSeeder::class);[m
+[32m+[m[32m        $this->call(SubCategoriesSeeder::class);[m
+[32m+[m[32m        $this->call(TypesSeeder::class);[m
+[32m+[m[32m        $this->call(UtilitiesSeeder::class);[m
+[32m+[m[32m        $this->call(ProductsSeeder::class);[m
+     }[m
+ }[m
+[31m-   // \App\Models\User::factory(10)->create();[m
+[31m-[m
+[31m-        // \App\Models\User::factory()->create([[m
+[31m-        //     'name' => 'Test User',[m
+[31m-        //     'email' => 'test@example.com',[m
+[31m-        // ]);[m
+\ No newline at end of file[m
+[1mdiff --git a/database/seeders/UserSeeder.php b/database/seeders/UserSeeder.php[m
+[1mindex 7ad2fbb..fe04b45 100644[m
+[1m--- a/database/seeders/UserSeeder.php[m
+[1m+++ b/database/seeders/UserSeeder.php[m
+[36m@@ -26,28 +26,3 @@[m [mpublic function run()[m
+         User::factory(20)->create();[m
+     }[m
+ }[m
+[31m-[m
+[31m-/**[m
+[31m-function convertNameToCode($fullName)[m
+[31m-{[m
+[31m-    $parts = explode(" ", $fullName);[m
+[31m-    if($parts.length==4){[m
+[31m-    $firstLetterOfFirstName =substr($parts[2], 0, 1);[m
+[31m-    $secondLastName = $parts[3];[m
+[31m-    $firstTwoLettersOfSecondName = substr($parts[1], 0, 2);[m
+[31m-    $code= $firstLetterOfFirstName . $secondLastName . $parts[0] . $firstTwoLettersOfSecondName;[m
+[31m-    return strtolower($code);[m
+[31m-    }else{[m
+[31m-    $firstLetterOfFirstName =substr($parts[1], 0, 1);[m
+[31m-    $secondLastName = $parts[2];[m
+[31m-    $firstTwoLettersOfSecondName = '';[m
+[31m-    $code= $firstLetterOfFirstName . $secondLastName . $parts[0] . $firstTwoLettersOfSecondName;[m
+[31m-    return strtolower($code);[m
+[31m-    }[m
+[31m-}[m
+[31m-// Ejemplo de uso[m
+[31m-[m
+[31m-$fullName = "Brayan Rojas Freyre";[m
+[31m-$code = convertNameToCode($fullName); [m
+[31m-[m
+[31m-*/[m
+\ No newline at end of file[m
+[1mdiff --git a/resources/views/employee/created.blade.php b/resources/views/employee/created.blade.php[m
+[1mdeleted file mode 100644[m
+[1mindex a1c44f5..0000000[m
+[1m--- a/resources/views/employee/created.blade.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,214 +0,0 @@[m
+[31m-@extends('layouts.base') @prepend('styles') @section('content') [m
+[31m-<div class="container px-6 mx-auto grid">[m
+[31m-    <div class="grid grid-cols-6">[m
+[31m-      <h2 class="my-6  font-semibold text-gray-700 dark:text-gray-200">[m
+[31m-        {{$titulo}}[m
+[31m-      </h2>[m
+[31m-    </div>[m
+[31m-    <!-- General elements -->[m
+[31m-    [m
+[31m-    <!-- Inputs with icons -->[m
+[31m-    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">[m
+[31m-      [m
+[31m-        @if (session('error'))[m
+[31m-        <div class="alert alert-danger">[m
+[31m-            {{ session('error') }}[m
+[31m-        </div>[m
+[31m-    @endif[m
+[31m-<form method="post" action="{{route('empleados.store')}}"  enctype="multipart/form-data">[m
+[31m-    @csrf[m
+[31m-    <div class="flex flex-wrap">[m
+[31m-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="name">[m
+[31m-                Nombre <i class="fa-regular fas fa-circle-exclamation" title="Importante"></i>[m
+[31m-            </label>[m
+[31m-            <input class="block w-full mt-1 text-sm border-gray-600 text-gray-700 dark:text-gray-300 dark:bg-gray-700  form-input"[m
+[31m-            id="name" type="text" name="name"   placeholder="Nombre">[m
+[31m-            <span class="text-xs text-red-600 dark:text-red-400">[m
+[31m-                @error('name') [m
+[31m-                {{($message)}}[m
+[31m-                @enderror[m
+[31m-              </span>[m
+[31m-        </div>[m
+[31m-        <div class="w-full mb-6 md:w-1/2 px-3">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="lastname">[m
+[31m-                Apellido <i class="fa-regular fas fa-circle-exclamation" title="Importante"></i>[m
+[31m-            </label>[m
+[31m-            <input class="block w-full mt-1 text-sm border-gray-600 text-gray-700 dark:text-gray-300 dark:bg-gray-700  form-input"[m
+[31m-            id="lastname" type="text" name="lastname"   placeholder="Apellido">[m
+[31m-            <span class="text-xs text-red-600 dark:text-red-400">[m
+[31m-                @error('lastname') [m
+[31m-                {{($message)}}[m
+[31m-                @enderror[m
+[31m-              </span>[m
+[31m-        </div>[m
+[31m-    </div>[m
+[31m-    <div class="flex flex-wrap">[m
+[31m-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="document">[m
+[31m-                DNI <i class="fa-regular fas fa-circle-exclamation" title="Deber ser unico"></i>[m
+[31m-            </label>[m
+[31m-            <input class="block w-full mt-1 text-sm border-gray-600 text-gray-700 dark:text-gray-300 dark:bg-gray-700  form-input"[m
+[31m-            id="document" type="text" name="document"   placeholder="Documento">[m
+[31m-            <span class="text-xs text-red-600 dark:text-red-400">[m
+[31m-                @error('document') [m
+[31m-                {{($message)}}[m
+[31m-                @enderror[m
+[31m-              </span>[m
+[31m-        </div>[m
+[31m-        <div class="w-full mb-6 md:w-1/2 px-3">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="email">[m
+[31m-                Correo Electrónico <i class="fa-regular fas fa-circle-exclamation" title="Importante"></i>[m
+[31m-            </label>[m
+[31m-            <input class="block w-full mt-1 text-sm border-gray-600 text-gray-700 dark:text-gray-300 dark:bg-gray-700  form-input"[m
+[31m-            id="email" type="email" name="email"  placeholder="Correo Electrónico">[m
+[31m-            <span class="text-xs text-red-600 dark:text-red-400">[m
+[31m-                @error('email') [m
+[31m-                {{($message)}}[m
+[31m-                @enderror[m
+[31m-              </span>[m
+[31m-        </div>[m
+[31m-    </div>[m
+[31m-    <div class="flex flex-wrap">[m
+[31m-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="address">[m
+[31m-                Dirección[m
+[31m-            </label>[m
+[31m-            <input class="block w-full mt-1 text-sm  text-gray-700 dark:text-gray-300 dark:bg-gray-700  form-input"[m
+[31m-            id="address" type="text" name="address"  placeholder="Dirección">[m
+[31m-            <span class="text-xs text-red-600 dark:text-red-400">[m
+[31m-                @error('address') [m
+[31m-                {{($message)}}[m
+[31m-                @enderror[m
+[31m-              </span>[m
+[31m-        </div>[m
+[31m-        <div class="w-full mb-6 md:w-1/2 px-3">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="birthday_date">[m
+[31m-                Fecha de Nacimiento <i class="fa-regular fas fa-circle-exclamation" title="Importante"></i>[m
+[31m-            </label>[m
+[31m-            <input class="block w-full mt-1 text-sm border-gray-600  text-gray-700 dark:text-gray-300 dark:bg-gray-700  form-input"[m
+[31m-            id="birthday_date" type="date" name="birthday_date"   placeholder="Fecha de Nacimiento">[m
+[31m-            <span class="text-xs text-red-600 dark:text-red-400">[m
+[31m-                @error('birthday_date') [m
+[31m-                {{($message)}}[m
+[31m-                @enderror[m
+[31m-              </span>[m
+[31m-        </div>[m
+[31m-    </div>[m
+[31m-    <div class="flex flex-wrap">[m
+[31m-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="gender">[m
+[31m-                Género <i class="fa-regular fas fa-circle-exclamation" title="Importante"></i>[m
+[31m-            </label>[m
+[31m-            <select class="block w-full mt-1 text-sm text-gray-700 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select  dark:focus:shadow-outline-gray"[m
+[31m-            id="gender" name="gender">[m
+[31m-            <option  value="" >Seleccione una opcion</option>[m
+[31m-            <option value="Masculino" >Masculino</option>[m
+[31m-            <option value="Femenino" >Femenino</option>[m
+[31m-            </select>[m
+[31m-            <span class="text-xs text-red-600 dark:text-red-400">[m
+[31m-                @error('gender') [m
+[31m-                {{($message)}}[m
+[31m-                @enderror[m
+[31m-              </span>[m
+[31m-        </div>[m
+[31m-        <div class="w-full mb-6 md:w-1/2 px-3">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="phone">[m
+[31m-                Teléfono <i class="fa-regular fas fa-circle-exclamation" title="Importante"></i>[m
+[31m-            </label>[m
+[31m-            <input class="block w-full mt-1 text-sm border-gray-600 text-gray-700 dark:text-gray-300 dark:bg-gray-700  form-input"[m
+[31m-            id="phone" type="tel" name="phone"   placeholder="Teléfono">[m
+[31m-            <span class="text-xs text-red-600 dark:text-red-400">[m
+[31m-                @error('phone') [m
+[31m-                {{($message)}}[m
+[31m-                @enderror[m
+[31m-              </span>[m
+[31m-        </div>[m
+[31m-    </div>[m
+[31m-    <div class="flex flex-wrap">[m
+[31m-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="file">[m
+[31m-                Documentos[m
+[31m-            </label>[m
+[31m-            <div class="relative w-full">[m
+[31m-                <input id="file" name="file" type="file" class="block w-full text-sm text-slate-500[m
+[31m-                  file:mr-4 file:py-2 file:px-4[m
+[31m-                  file:rounded-full file:border-0[m
+[31m-                  file:text-sm file:font-semibold[m
+[31m-                  file:bg-emerald-50 file:text-emerald-700[m
+[31m-                  hover:file:bg-emerald-100 " placeholder="Seleccione un archivo">[m
+[31m-                <span class="file:text-sm file:font-medium text-slate-500 " id="document_name"></span>[m
+[31m-              </div>[m
+[31m-              <span class="text-xs text-red-600 dark:text-red-400">[m
+[31m-                @error('file')[m
+[31m-                {{($message)}}[m
+[31m-                @enderror[m
+[31m-              </span>[m
+[31m-        </div>[m
+[31m-        <div class="w-full md:w-1/2 mb-6 px-3">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="avatar">[m
+[31m-                Avatar[m
+[31m-            </label>[m
+[31m-            <div class="flex items-center ">[m
+[31m-                <div class="shrink-0">[m
+[31m-                    <img class="h-8 w-8 mr-3 object-cover rounded-full hidden" src=""/>[m
+[31m-                    [m
+[31m-                  </div>[m
+[31m-                  <label class="block w-full">[m
+[31m-                    <input type="file" id="avatar" name="avatar" accept="image/*" class="block w-full text-sm text-slate-500[m
+[31m-                    file:mr-4 file:py-2 file:px-4[m
+[31m-                    file:rounded-full file:border-0[m
+[31m-                    file:text-sm file:font-semibold[m
+[31m-                    file:bg-emerald-50 file:text-emerald-700[m
+[31m-                    hover:file:bg-emerald-100 "/>[m
+[31m-                  </label>[m
+[31m-            </div>[m
+[31m-            <span class="text-xs text-red-600 dark:text-red-400">[m
+[31m-                @error('avatar') [m
+[31m-                {{($message)}}[m
+[31m-                @enderror[m
+[31m-              </span>[m
+[31m-        </div>[m
+[31m-    </div>[m
+[31m-    <div class="flex flex-wrap">[m
+[31m-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="jobs_id">[m
+[31m-                Cargo <i class="fa-regular fas fa-circle-exclamation" title="Importante"></i>[m
+[31m-            </label>[m
+[31m-            <select class="block w-full mt-1 text-sm text-gray-700 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select  dark:focus:shadow-outline-gray"[m
+[31m-            id="jobs_id" name="jobs_id">[m
+[31m-            <option  value="" >Seleccione una opcion</option>[m
+[31m-[m
+[31m-                @foreach($jobs as $job)[m
+[31m-                    <option  value="{{($job->id)}}" >{{($job->name)}}</option>[m
+[31m-                @endforeach[m
+[31m-            </select>[m
+[31m-            <span class="text-xs text-red-600 dark:text-red-400">[m
+[31m-                @error('jobs_id') [m
+[31m-                {{($message)}}[m
+[31m-                @enderror[m
+[31m-              </span>[m
+[31m-        </div>[m
+[31m-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">[m
+[31m-            <label class="block uppercase tracking-wide text-gray-700 dark:text-gray-400 text-xs font-bold mb-2" for="enabled">[m
+[31m-                Habilitar usuario <i class="fa-regular fas fa-circle-question" title="Permitir creacion de usuario"></i>[m
+[31m-            </label>[m
+[31m-            <input class="form-checkbox text-indigo-600 dark:text-indigo-400"[m
+[31m-            id="isUser" type="checkbox" name="isUser" value="" >[m
+[31m-        </div>[m
+[31m-    </div>[m
+[31m-<div class="flex flex-wrap">[m
+[31m-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">[m
+[31m-        <button class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold[m
+[31m-         py-2 px-4 rounded focus:outline-none focus:shadow-outline"[m
+[31m-        type="submit">[m
+[31m-            Registrar[m
+[31m-        </button>[m
+[31m-        <a  href="{{(route('empleados.index'))}}" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">[m
+[31m-            regresar[m
+[31m-        </a>[m
+[31m-    </div>[m
+[31m-</div>[m
+[31m-</form>[m
+[31m-    </div>[m
+[31m-  </div> @endsection[m
+\ No newline at end of file[m
+[1mdiff --git a/resources/views/employee/edit.blade.php b/resources/views/employee/edit.blade.php[m
+[1mindex 410b4ed..1334df2 100644[m
+[1m--- a/resources/views/employee/edit.blade.php[m
+[1m+++ b/resources/views/employee/edit.blade.php[m
+[36m@@ -14,7 +14,7 @@[m
+             {{ session('error') }}[m
+         </div>[m
+         @endif[m
+[31m-        {!! Form::model($employee, [ 'method' => 'PUT', 'route' => ['empleados.update', $employee], 'enctype' => 'multipart/form-data']) !!}[m
+[32m+[m[32m        {!! Form::model($employee, [ 'method' => 'PUT', 'route' => ['employee.update', $employee], 'enctype' => 'multipart/form-data']) !!}[m
+         @csrf[m
+         <div class="flex flex-wrap">[m
+             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">[m
+[36m@@ -157,7 +157,7 @@[m
+         <div class="flex flex-wrap">[m
+             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">[m
+                 {!! Form::submit('Actualizar', ['class' => 'bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline']) !!}[m
+[31m-                <a href="{{(route('empleados.index'))}}" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">[m
+[32m+[m[32m                <a href="{{(route('employee.index'))}}" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">[m
+                     regresar[m
+                 </a>[m
+             </div>[m
+[1mdiff --git a/resources/views/employee/index.blade.php b/resources/views/employee/index.blade.php[m
+[1mindex 50a26fd..829a283 100644[m
+[1m--- a/resources/views/employee/index.blade.php[m
+[1m+++ b/resources/views/employee/index.blade.php[m
+[36m@@ -5,7 +5,7 @@[m
+     <div class="grid grid-cols-6">[m
+         <h2 class="col-span-6 md:col-span-3 my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">[m
+             {{$titulo}}[m
+[31m-            <a href="{{route('empleados.created')}}"[m
+[32m+[m[32m            <a href="{{route('employee.create')}}"[m
+                 class=" items-center mt-3 justify-between px-4 py-2 text-sm font-semibold leading-5 text-white transition-colors duration-150 bg-emerald-500 border border-transparent rounded-lg active:bg-emerald-500 hover:bg-emerald-700 focus:outline-none focus:shadow-outline-emerald">[m
+                 Nuevo[m
+                 [m
+[36m@@ -85,9 +85,13 @@[m [mclass=" items-center mt-3 justify-between px-4 py-2 text-sm font-semibold leadin[m
+                             @endif[m
+                         </td>[m
+                         <td class="px-4 py-3 text-sm text-center no-export">[m
+[31m-                            <a href ="{{route('empleados.edit',$value)}}"  style=" border: none;" class="p-2 focus:outline-none focus:shadow-outline-gray editar text-sm font-medium leading-5 text-gray-700 hover:text-gray-900 transition-colors duration-150 dark:text-gray-400 rounded"><i class="fas fa-edit"></i></a>[m
+[32m+[m[32m                            <a href ="{{route('employee.edit',$value)}}"  style=" border: none;"[m[41m [m
+[32m+[m[32m                            class="p-2 focus:outline-none focus:shadow-outline-gray[m
+[32m+[m[32m                             editar text-sm font-medium leading-5 text-gray-700[m
+[32m+[m[32m                              hover:text-gray-900 transition-colors duration-150[m
+[32m+[m[32m                               dark:text-gray-400 rounded"><i class="fas fa-edit"></i></a>[m
+                             [m
+[31m-                            {!! Form::open(['route' => ['empleados.destroy', $value], 'method' => 'delete']) !!}[m
+[32m+[m[32m                            {!! Form::open(['route' => ['employee.destroy', $value], 'method' => 'delete']) !!}[m
+                             @csrf[m
+                             <button type="submit" class="p-2 focus:outline-none focus:shadow-outline-gray eliminar [m
+                             text-sm font-medium leading-5 text-gray-700 hover:text-gray-900 transition-colors duration-150 dark:text-gray-400 rounded">[m
+[1mdiff --git a/resources/views/layouts/base.blade.php b/resources/views/layouts/base.blade.php[m
+[1mindex 5d661ee..d6aaf23 100644[m
+[1m--- a/resources/views/layouts/base.blade.php[m
+[1m+++ b/resources/views/layouts/base.blade.php[m
+[36m@@ -3,8 +3,6 @@[m
+     <head>[m
+         @vite('resources/css/app.css')[m
+         <link rel="shortcut icon" type="image/x-icon" href="{{asset('/assets/img/logo-farmacia.svg') }}">[m
+[31m-[m
+[31m-        [m
+         <meta charset="UTF-8"/>[m
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>[m
+         <title>Mikafarma | {{$titulo}}</title>[m
+[36m@@ -14,11 +12,9 @@[m
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>[m
+         <link href="https://fonts.googleapis.com/css2?family=Atma:wght@600&family=Montserrat:ital,wght@0,800;1,800&display=swap" rel="stylesheet"/>[m
+         <link href="https://fonts.googleapis.com/css2?family=Atma:wght@600&family=Montserrat:ital,wght@0,800;1,800&display=swap" rel="stylesheet"/>[m
+[31m-        [m
+         <link rel="stylesheet" href="{{ asset('assets/css/fontawesome-free-6.3.0-web/css/all.css') }}"/>[m
+         <link rel="stylesheet" href="{{ asset('assets/css/tailwind.output.css') }}"/>[m
+         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/jszip-2.5.0/dt-1.13.2/af-2.5.2/b-2.3.4/b-html5-2.3.4/b-print-2.3.4/cr-1.6.1/date-1.3.0/fc-4.2.1/fh-3.3.1/kt-2.8.1/r-2.4.0/rg-1.3.0/rr-1.3.2/sc-2.1.0/sb-1.4.0/sp-2.1.1/sl-1.6.0/sr-1.2.1/datatables.min.css"/>[m
+[31m- [m
+         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>[m
+         <script src="{{ asset('assets/js/init-alpine.js') }}"></script>[m
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"/>[m
+[36m@@ -30,12 +26,11 @@[m
+         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>[m
+         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>[m
+         <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.13.2/af-2.5.2/b-2.3.4/b-html5-2.3.4/b-print-2.3.4/cr-1.6.1/date-1.3.0/fc-4.2.1/fh-3.3.1/kt-2.8.1/r-2.4.0/rg-1.3.0/rr-1.3.2/sc-2.1.0/sb-1.4.0/sp-2.1.1/sl-1.6.0/sr-1.2.1/datatables.min.js"></script>[m
+[31m-       [m
+[31m-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>[m
+[31m-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>[m
+[31m-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/jszip-2.5.0/dt-1.13.2/af-2.5.2/b-2.3.4/b-html5-2.3.4/b-print-2.3.4/cr-1.6.1/date-1.3.0/fc-4.2.1/fh-3.3.1/kt-2.8.1/r-2.4.0/rg-1.3.0/rr-1.3.2/sc-2.1.0/sb-1.4.0/sp-2.1.1/sl-1.6.0/sr-1.2.1/datatables.min.js"></script>[m
+[31m-<link rel="stylesheet" href="{{ asset('assets/css/modificacion.css') }}"/>[m
+[31m-<link rel="stylesheet" href="{{ asset('assets/css/datatables-taillwind.css') }}"/>[m
+[32m+[m[32m        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>[m
+[32m+[m[32m        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>[m
+[32m+[m[32m        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/jszip-2.5.0/dt-1.13.2/af-2.5.2/b-2.3.4/b-html5-2.3.4/b-print-2.3.4/cr-1.6.1/date-1.3.0/fc-4.2.1/fh-3.3.1/kt-2.8.1/r-2.4.0/rg-1.3.0/rr-1.3.2/sc-2.1.0/sb-1.4.0/sp-2.1.1/sl-1.6.0/sr-1.2.1/datatables.min.js"></script>[m
+[32m+[m[32m        <link rel="stylesheet" href="{{ asset('assets/css/modificacion.css') }}"/>[m
+[32m+[m[32m        <link rel="stylesheet" href="{{ asset('assets/css/datatables-taillwind.css') }}"/>[m
+ [m
+     </head>[m
+     <body>[m
+[36m@@ -89,7 +84,7 @@[m
+                                     class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"[m
+                                     aria-label="submenu">[m
+                                     <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">[m
+[31m-                                        <a class="w-full" href="{{route('empleados.index')}}">Personal</a>[m
+[32m+[m[32m                                        <a class="w-full" href="{{route('employee.index')}}">Personal</a>[m
+                                     </li>[m
+                                     <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">[m
+                                         <a class="w-full" href="pages/create-account.html">[m
+[36m@@ -106,7 +101,7 @@[m [mclass="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 roun[m
+                             </template>[m
+                         </li>[m
+                         <li class="relative px-6 py-3">[m
+[31m-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="forms.html">[m
+[32m+[m[32m                            <a href="{{route('product.index')}}"  class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >[m
+                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">[m
+                                     <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>[m
+                                 </svg>[m
+[36m@@ -114,7 +109,7 @@[m [mclass="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 roun[m
+                             </a>[m
+                         </li>[m
+                         <li class="relative px-6 py-3">[m
+[31m-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="cards.html">[m
+[32m+[m[32m                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >[m
+                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">[m
+                                     <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>[m
+                                 </svg>[m
+[36m@@ -122,7 +117,7 @@[m [mclass="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 roun[m
+                             </a>[m
+                         </li>[m
+                         <li class="relative px-6 py-3">[m
+[31m-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="buttons.html">[m
+[32m+[m[32m                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >[m
+                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">[m
+                                     <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>[m
+                                 </svg>[m
+[36m@@ -204,7 +199,7 @@[m [mclass="fixed inset-y-0 z-20 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white da[m
+                                     class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"[m
+                                     aria-label="submenu">[m
+                                     <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">[m
+[31m-                                        <a class="w-full" href="{{route('empleados.index')}}">Personal</a>[m
+[32m+[m[32m                                        <a class="w-full" href="{{route('employee.index')}}">Personal</a>[m
+                                     </li>[m
+                                     <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">[m
+                                         <a class="w-full" href="pages/create-account.html">[m
+[36m@@ -221,7 +216,7 @@[m [mclass="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 roun[m
+                             </template>[m
+                         </li>[m
+                         <li class="relative px-6 py-3">[m
+[31m-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="forms.html">[m
+[32m+[m[32m                            <a href="{{route('product.index')}}" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >[m
+                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">[m
+                                     <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>[m
+                                 </svg>[m
+[36m@@ -229,7 +224,7 @@[m [mclass="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 roun[m
+                             </a>[m
+                         </li>[m
+                         <li class="relative px-6 py-3">[m
+[31m-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="cards.html">[m
+[32m+[m[32m                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >[m
+                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">[m
+                                     <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>[m
+                                 </svg>[m
+[36m@@ -237,7 +232,7 @@[m [mclass="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 roun[m
+                             </a>[m
+                         </li>[m
+                         <li class="relative px-6 py-3">[m
+[31m-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="buttons.html">[m
+[32m+[m[32m                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >[m
+                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">[m
+                                     <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>[m
+                                 </svg>[m
+[1mdiff --git a/routes/web.php b/routes/web.php[m
+[1mindex d8791db..b6714b5 100644[m
+[1m--- a/routes/web.php[m
+[1m+++ b/routes/web.php[m
+[36m@@ -1,21 +1,10 @@[m
+ <?php[m
+ [m
+ use App\Http\Controllers\EmployeeController;[m
+[32m+[m[32muse App\Http\Controllers\ProductController;[m
+ use Illuminate\Support\Facades\Route;[m
+ use App\Http\Controllers\HomeController;[m
+ [m
+ Route::get('/', HomeController::class);[m
+[31m-[m
+[31m-Route::controller(EmployeeController::class)->group([m
+[31m-    function () {[m
+[31m-        Route::get('empleados','index')->name('empleados.index');[m
+[31m-        Route::get('empleados/nuevo','created')->name('empleados.created');[m
+[31m-        Route::get('empleados/{employee}/edit','edit')->name('empleados.edit');[m
+[31m-        Route::post('empleados','store')->name('empleados.store');[m
+[31m-        Route::put('empleados/{employee}','update')->name('empleados.update');[m
+[31m-        [m
+[31m-        Route::delete('empleados/{employee}','destroy')->name('empleados.destroy');[m
+[31m-        // Route::get('empleados/{employee}','show')->name('empleados.show');[m
+[31m-[m
+[31m-    }[m
+[31m-);[m
+[32m+[m[32mRoute::resource('empleados',EmployeeController::class)->parameters(['empleados'=>'employee'])->names('employee');[m
+[32m+[m[32mRoute::resource('productos',ProductController::class)->parameters(['productos'=>'product'])->names('product');[m

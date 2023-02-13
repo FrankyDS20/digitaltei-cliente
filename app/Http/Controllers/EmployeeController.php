@@ -33,13 +33,13 @@ class EmployeeController extends Controller
         $empresa = $this->empresa;
         return view('employee.edit',compact('employee','jobs','titulo','empresa'));
     }
-    public function created()
+    public function create()
     {
         $jobs = Job::all();
        
         $titulo = "Nuevo empleado";
         $empresa = $this->empresa;
-        return view('employee.created',compact('titulo','jobs','empresa'));
+        return view('employee.create',compact('titulo','jobs','empresa'));
     }
     public function store(StoreEmployee $request)
     {
@@ -58,7 +58,7 @@ class EmployeeController extends Controller
             $data['avatar'] = 'images/default.png';
         }
         if (Employee::create($data)) {
-            return redirect()->route('empleados.index');
+            return redirect()->route('employee.index');
         } else {
             unlink($ruta);
             return redirect()->back()->with('error', 'No se pudo registrar el registro.');
@@ -84,7 +84,7 @@ class EmployeeController extends Controller
             $data['file'] = $employee->file;
         }
         if ($employee->update($data)) {
-            return redirect()->route('empleados.index');
+            return redirect()->route('employee.index');
         } else {
             unlink($ruta);
             return redirect()->back()->with('error', 'No se pudo actualizar el registro.');
@@ -95,33 +95,8 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         $employee->delete();
-        return redirect()->route('empleados.index');
+        return redirect()->route('employee.index');
     }
-    public function validation($request){
-       return $request->validate([
-            'name' => 'required',
-            'lastname' => 'required',
-            'document' => 'required|unique:employees',
-            'email' => 'required|unique:employees',
-            'birthday_date' => 'required',
-            'gender' => 'required',
-            'phone' => 'required|unique:employees',
-            'jobs_id' => 'required',
-            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg'
-        ]);
-    }
-    public function validationUp($request){
-        return $request->validate([
-             'name' => 'required',
-             'lastname' => 'required',
-             'document' => 'required|unique:employees,document,'.$request->id,
-             'email' => 'required|unique:employees,email,'.$request->id,
-             'birthday_date' => 'required',
-             'gender' => 'required',
-             'phone' => 'required|unique:employees,phone,'.$request->id,
-             'jobs_id' => 'required',
-             'avatar' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-         ]);
-     }
+  
 }
 

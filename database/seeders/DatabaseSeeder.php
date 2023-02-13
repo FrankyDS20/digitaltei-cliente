@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
         $this->call(User_typeSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(AccessSeeder::class);
+        $this->call(BrandsSeeder::class);
+        $this->call(CategoriesSeeder::class);
+        $this->call(SubCategoriesSeeder::class);
+        $this->call(TypesSeeder::class);
+        $this->call(UtilitiesSeeder::class);
+        $this->call(ProductsSeeder::class);
     }
 }
-   // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);

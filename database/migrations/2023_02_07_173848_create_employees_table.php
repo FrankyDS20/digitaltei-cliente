@@ -32,7 +32,7 @@ return new class extends Migration
             $table->foreign('jobs_id')->references('id')->on('jobs');
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *

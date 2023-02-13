@@ -1,0 +1,142 @@
+.dataTables_length,.dataTables_wrapper, .dataTables_filter{
+    padding: 10px;
+}
+.dataTables_wrapper select,
+.dataTables_wrapper .dataTables_filter input {
+color: #4a5568; 			/*text-gray-700*/
+padding-left: 1rem; 		/*pl-4*/
+padding-right: 1rem; 		/*pl-4*/
+padding-top: .5rem; 		/*pl-2*/
+padding-bottom: .5rem; 		/*pl-2*/
+line-height: 1.25; 			/*leading-tight*/
+border-width: 2px; 			/*border-2*/
+border-radius: .25rem; 		
+border-color: #edf2f7; 		/*border-gray-200*/
+background-color: #edf2f7; 	/*bg-gray-200*/
+}
+
+/*Row Hover*/
+table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
+background-color: #ebf4ff;	/*bg-indigo-100*/
+}
+
+/*Pagination Buttons*/
+.dataTables_wrapper .dataTables_paginate .paginate_button		{
+font-weight: 700;				/*font-bold*/
+border-radius: .25rem;			/*rounded*/
+/* border: 1px solid transparent;	border border-transparent */
+}
+
+/*Pagination Buttons - Current selected */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current	{
+color: #fff !important;				/*text-white*/
+box-shadow: 0 1px 3px 0 rgba(230, 226, 226, 0.1), 0 1px 2px 0 rgba(204, 203, 203, 0.06); 	
+/* shadow; */
+font-weight: 700;					/*font-bold*/
+border-radius: .25rem;				/*rounded*/
+background: #129160 !important;		/*bg-indigo-500*/
+border: 1px solid transparent;		/*border border-transparent*/
+}
+
+/*Pagination Buttons - Hover */
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover		{
+color: #fff !important;				/*text-white*/
+/* box-shadow: 0 1px 3px 0 rgba(233, 231, 231, 0.1), 0 1px 2px 0 rgba(236, 235, 235, 0.06);	 shadow */
+font-weight: 700;					/*font-bold*/
+border-radius: .25rem;				/*rounded*/
+background: #075a2a !important;		/*bg-indigo-500*/
+border: 1px solid transparent;		/*border border-transparent*/
+}
+
+/*Add padding to bottom border */
+table.dataTable.no-footer {
+border-bottom: 1px solid #e2e8f0;	/*border-b-1 border-gray-300*/
+margin-top: 0.75em;
+margin-bottom: 0.75em;
+}
+.buttons-excel {
+font-size: 10px;
+padding: 10px 20px;
+font-weight: 500;
+background: #1F2937;
+color: white;
+border: none;
+position: relative;
+overflow: hidden;
+border-radius: 0.6em;
+
+}
+
+.buttons-excel::hover {
+    background-color: #ffffff;
+    color: #3399ff;
+    border-color: #3399ff;
+
+    }
+
+.buttons-copy {
+font-size: 10px;
+padding: 10px 20px;
+font-weight: 500;
+background: #1F2937;
+color: white;
+border: none;
+position: relative;
+overflow: hidden;
+border-radius: 0.6em;
+
+}
+.buttons-copy::hover {
+    background-color: #ffffff;
+    color: #f7a000;
+    border-color: #f7a000;
+    }
+.buttons-pdf {
+font-size: 10px;
+padding: 10px 20px;
+font-weight: 500;
+background: #1F2937;
+color: white;
+border: none;
+position: relative;
+overflow: hidden;
+border-radius: 0.6em;
+
+}
+.buttons-pdf::hover {
+    background-color: #ffffff;
+    color: #ff0000;
+    border: 2px solid #ff0000;
+    }
+.buttons-print {
+font-size: 10px;
+padding: 10px 20px;
+font-weight: 500;
+background: #1F2937;
+color: white;
+border: none;
+position: relative;
+overflow: hidden;
+border-radius: 0.6em;
+
+}
+.buttons-print::hover {
+    background-color: #3f3f3f;
+    }
+.transition {
+transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+transition-duration: 500ms;
+background-color: rgba(16, 185, 129, 0.6);
+border-radius: 9999px;
+width: 0;
+height: 0;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+}
+
+
+
+
+

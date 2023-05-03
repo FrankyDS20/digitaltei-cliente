@@ -6,7 +6,7 @@
     </h2>
     <!-- CTA -->
     <a
-        class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-emerald-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+        class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-amber-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
         
     >
         <div class="flex items-center">

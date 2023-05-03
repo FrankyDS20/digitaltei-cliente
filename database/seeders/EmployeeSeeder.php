@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Employee;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class EmployeeSeeder extends Seeder
 {
@@ -20,6 +21,8 @@ class EmployeeSeeder extends Seeder
         $employee->name="Brayan Eduardo";
         $employee->lastname="Rojas Freyre";
         $employee->document="74473887";
+        $txt= "Rojas Freyre 74473887";
+        $employee->slug=Str::slug($txt,'-');
         $employee->email="rfreyrebrayaned@gmail.com";
         $employee->address="Peru, Lambayeque";
         $employee->phone="+51998511769";

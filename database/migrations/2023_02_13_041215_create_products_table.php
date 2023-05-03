@@ -22,7 +22,6 @@ return new class extends Migration
             $table->boolean('status')->default(true);
             $table->string('slug')->nullable();
             $table->string('image')->nullable();
-            $table->string('utility')->nullable();
             $table->unsignedInteger('brand_id')->required();
             $table->unsignedInteger('subcategory_id')->required();
             $table->unsignedInteger('type_id')->required();

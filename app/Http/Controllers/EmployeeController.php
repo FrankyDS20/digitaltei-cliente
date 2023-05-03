@@ -14,7 +14,7 @@ use Intervention\Image\Facades\Image;
 class EmployeeController extends Controller
 {
 
-    protected $empresa = "MikaFarma";
+    protected $empresa = "DIGITALTEI";
     public function index()
     {
         

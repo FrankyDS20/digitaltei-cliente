@@ -517,12 +517,12 @@ warning: in the working copy of 'routes/web.php', LF will be replaced by CRLF th
 [36m@@ -3,8 +3,6 @@[m
      <head>[m
          @vite('resources/css/app.css')[m
-         <link rel="shortcut icon" type="image/x-icon" href="{{asset('/assets/img/logo-farmacia.svg') }}">[m
+         <link rel="shortcut icon" type="image/x-icon" href="{{asset('/assets/img/logo.png') }}">[m
 [31m-[m
 [31m-        [m
          <meta charset="UTF-8"/>[m
          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>[m
-         <title>Mikafarma | {{$titulo}}</title>[m
+         <title>Digitaltei | {{$titulo}}</title>[m
 [36m@@ -14,11 +12,9 @@[m
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>[m
          <link href="https://fonts.googleapis.com/css2?family=Atma:wght@600&family=Montserrat:ital,wght@0,800;1,800&display=swap" rel="stylesheet"/>[m

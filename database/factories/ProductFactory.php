@@ -23,16 +23,16 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->name,
-            'description' => $this->faker->realText(200),
+            'name' => $this->faker->unique()->word,
+            'description' => $this->faker->realText(20),
             'price' => $this->faker->randomFloat(2, 0, 1000),
             'presentation' => $this->faker->realText(20),
             'status' => $this->faker->boolean,
             'image' => 'images/default_product.png',
             'slug' => Str::slug($this->faker->unique()->name,'-'),
-            'utility' => $this->faker->words(3, true),
+            //'utility' => $this->faker->words(3, true),
             'brand_id' => Brand::inRandomOrder()->first()->id,
-            'category_id' => Category::inRandomOrder()->first()->id,
+            // 'category_id' => Category::inRandomOrder()->first()->id,
             'subcategory_id' => Subcategory::inRandomOrder()->first()->id,
             'type_id' => Type::inRandomOrder()->first()->id
         ];

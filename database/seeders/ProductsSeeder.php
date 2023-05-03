@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Factories\ProductFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class ProductsSeeder extends Seeder
      */
     public function run()
     {
-        //
+        ProductFactory::times(55)->create();
     }
 }

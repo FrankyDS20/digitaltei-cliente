@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
 {
-    Schema::create('utilities', function (Blueprint $table) {
+    Schema::create('image', function (Blueprint $table) {
         $table->increments('id');
+        $table->unsignedInteger('product_id')->required();
         $table->string('name', 100)->required();
         $table->timestamps();
+        $table->foreign('product_id')->references('id')->on('products');
     });
 }
 

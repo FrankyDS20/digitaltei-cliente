@@ -9,7 +9,7 @@ class HomeController extends Controller
     public function __invoke()
     {
         $titulo = "Inicio";
-        $empresa = "MikaFarma";
+        $empresa = "DIGITALTEI";
         return view('Home',compact('titulo','empresa'));
     }
 }

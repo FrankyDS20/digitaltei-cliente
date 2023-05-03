@@ -112,7 +112,7 @@
                 Documentos
             </label>
             <div class="relative w-full">
-                {!! Form::file('file', ['id' => 'file', 'class' => 'block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100', 'placeholder' => 'Seleccione un archivo']) !!}
+                {!! Form::file('file', ['id' => 'file', 'class' => 'block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100', 'placeholder' => 'Seleccione un archivo']) !!}
                 <span id="document_name" class="file:text-sm file:font-medium text-slate-500 {{( empty($employee->file) ? 'hidden' : '' )}}">{{($employee->file)}}</span>
             </div>
             <span class="text-xs text-red-600 dark:text-red-400">
@@ -128,7 +128,7 @@
                     <img class="h-8 w-8 mr-3 object-cover rounded-full" src="{{( Storage::url($employee->avatar) )}}" />
                 </div>
                 <label class="block w-full">
-                    {!! Form::file('avatar', ['id' => 'avatar', 'accept' => 'image/*', 'class' => 'block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100']) !!}
+                    {!! Form::file('avatar', ['id' => 'avatar', 'accept' => 'image/*', 'class' => 'block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100']) !!}
                 </label>
             </div>
             <span class="text-xs text-red-600 dark:text-red-400">
@@ -156,7 +156,7 @@
         </div>
         <div class="flex flex-wrap">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                {!! Form::submit('Actualizar', ['class' => 'bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline']) !!}
+                {!! Form::submit('Actualizar', ['class' => 'bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline']) !!}
                 <a href="{{(route('employee.index'))}}" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     regresar
                 </a>

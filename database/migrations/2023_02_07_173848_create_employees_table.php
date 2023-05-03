@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('document')->notNull()->unique();
             $table->string('email')->notNull()->unique();
             $table->string('address')->nullable();
+            $table->string('slug')->nullable();
             $table->date('birthday_date')->notNull();
             $table->enum('gender', ['Femenino', 'Masculino'])->notNull();
             $table->string('phone')->notNull()->unique();

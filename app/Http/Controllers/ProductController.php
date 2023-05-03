@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    protected $empresa = "MikaFarma";
+    protected $empresa = "DIGITALTEI";
     public function index()
     {
         
@@ -28,7 +28,7 @@ class ProductController extends Controller
             'products.status',
             'products.slug',
             'products.image',
-            'products.utility',
+            // 'products.utility',
             'brands.name as brand_name',
             'sub_categories.name as subcategory_name',
             'types.name as type_name'
@@ -36,7 +36,7 @@ class ProductController extends Controller
         ->join('brands', 'products.brand_id', '=', 'brands.id')
         ->join('sub_categories', 'products.subcategory_id', '=', 'sub_categories.id')
         ->join('types', 'products.type_id', '=', 'types.id')
-        ->where('products.status', true)
+        // ->where('products.status', true)
         ->orderBy('products.id', 'DESC')
         ->get();
         // dd($product);
@@ -51,7 +51,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $types = Type::all();
         $subcategories =  SubCategory::all();
-        $utilities = Utility::all();
+        // $utilities = Utility::all();
         $titulo = "Editar producto";
         $empresa = $this->empresa;
         return view('product.edit',compact('product','brands','categories','types','subcategories','utilities','titulo','empresa'));
@@ -62,10 +62,10 @@ class ProductController extends Controller
         $categories = Category::all();
         $types = Type::all();
         $subcategories =  SubCategory::all();
-        $utilities = Utility::all();
+        // $utilities = Utility::all();
         $titulo = "Nuevo producto";
         $empresa = $this->empresa;
-        return view('product.create',compact('brands','categories','types','subcategories','utilities','titulo','empresa'));
+        return view('product.create',compact('brands','categories','types','subcategories','titulo','empresa'));
     }
     public function store(StoreProduct $request)
     {

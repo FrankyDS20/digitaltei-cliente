@@ -16,7 +16,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    'empresa' => 'Mikafarma',
+    'empresa' => 'DIGITALTEI',
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://mikafarma.test'),
+   'url' => env('APP_URL', 'http://digitaltei.test'),
+    // 'url' => env('APP_URL', 'http://localhost/digitaltei/public'),
 
     'asset_url' => env('ASSET_URL'),
 
@@ -74,7 +75,6 @@ return [
     'timezone' => 'America/Lima',
 
     /*
-    |--------------------------------------------------------------------------
     | Application Locale Configuration
     |--------------------------------------------------------------------------
     |

@@ -135,8 +135,8 @@
                   file:mr-4 file:py-2 file:px-4
                   file:rounded-full file:border-0
                   file:text-sm file:font-semibold
-                  file:bg-emerald-50 file:text-emerald-700
-                  hover:file:bg-emerald-100 " placeholder="Seleccione un archivo">
+                  file:bg-amber-50 file:text-amber-700
+                  hover:file:bg-amber-100 " placeholder="Seleccione un archivo">
                 <span class="file:text-sm file:font-medium text-slate-500 " id="document_name"></span>
               </div>
               <span class="text-xs text-red-600 dark:text-red-400">
@@ -159,8 +159,8 @@
                     file:mr-4 file:py-2 file:px-4
                     file:rounded-full file:border-0
                     file:text-sm file:font-semibold
-                    file:bg-emerald-50 file:text-emerald-700
-                    hover:file:bg-emerald-100 "/>
+                    file:bg-amber-50 file:text-amber-700
+                    hover:file:bg-amber-100 "/>
                   </label>
             </div>
             <span class="text-xs text-red-600 dark:text-red-400">
@@ -199,7 +199,7 @@
     </div>
 <div class="flex flex-wrap">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <button class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold
+        <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold
          py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         type="submit">
             Registrar

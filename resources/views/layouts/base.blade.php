@@ -2,10 +2,10 @@
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="es">
     <head>
         @vite('resources/css/app.css')
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset('/assets/img/logo-farmacia.svg') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('/assets/img/logo.png') }}">
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Mikafarma | {{$titulo}}</title>
+        <title>Digitaltei | {{$titulo}}</title>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -39,7 +39,7 @@
             <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
                 <div class="py-4 text-gray-500 dark:text-gray-400">
                     <div class="flex">
-                        <img style="" src="{{asset('/assets/img/logo-farmacia.svg') }}" class="h-6 ml-6" alt="Logo de la farmacia">
+                        <img style="" src="{{asset('/assets/img/logo.png') }}" class="h-7 ml-6" alt="Logo de la farmacia">
                         <h1 class="ml-1 text-lg  font-bold text-gray-800 dark:text-gray-200" href="#">
                           {{$empresa}}
                         </h1>
@@ -47,8 +47,11 @@
                     
                     <ul class="mt-6">
                         <li class="relative px-6 py-3">
-                            <span class="absolute inset-y-0 left-0 w-1 bg-emerald-500 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
-                            <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100" href="/">
+                            @if (Route::is('home'))
+                            <span class="absolute inset-y-0 left-0 w-1 bg-amber-500 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+                            @endif
+                            <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800
+                             transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100" href="{{route('home')}}">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                                 </svg>
@@ -56,10 +59,11 @@
                             </a>
                         </li>
                     </ul>
-
                     <ul>
-                        
-                        <li class="relative px-6 py-3">
+                        <li class="relative px-6 py-3  @if(request()->routeIs('employee.index')) active @endif">
+                            @if (Route::is('employee.index'))
+                            <span class="absolute inset-y-0 left-0 w-1 bg-amber-500 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+                            @endif
                             <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" @click="togglePagesMenu" aria-haspopup="true">
                                 <span class="inline-flex items-center">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,11 +100,13 @@
                                             Monitoreo
                                         </a>
                                     </li>
-                                   
                                 </ul>
                             </template>
                         </li>
                         <li class="relative px-6 py-3">
+                            @if (Route::is('product.index'))
+                            <span class="absolute inset-y-0 left-0 w-1 bg-amber-500 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+                            @endif
                             <a href="{{route('product.index')}}"  class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >
                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
@@ -109,6 +115,7 @@
                             </a>
                         </li>
                         <li class="relative px-6 py-3">
+                           
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >
                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
@@ -128,7 +135,7 @@
                     </ul>
                     <div class="px-6 my-6">
                         <button
-                            class="flex  items-center justify-between w-full px-4 py-2 text-sm font-semibold leading-5 text-white transition-colors duration-150 bg-emerald-500 border border-transparent rounded-lg active:bg-emerald-500 hover:bg-emerald-700 focus:outline-none focus:shadow-outline-emerald">
+                            class="flex  items-center justify-between w-full px-4 py-2 text-sm font-semibold leading-5 text-white transition-colors duration-150 bg-amber-500 border border-transparent rounded-lg active:bg-amber-500 hover:bg-amber-700 focus:outline-none focus:shadow-outline-amber">
                             Cerrar sesion <i class=" ml-2 fa-solid fa-power-off"></i>
                         </button>
                     </div>
@@ -163,7 +170,7 @@
                     </a>
                     <ul class="mt-6">
                         <li class="relative px-6 py-3">
-                            <span class="absolute inset-y-0 left-0 w-1 bg-emerald-500 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+                            <span class="absolute inset-y-0 left-0 w-1 bg-amber-500 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100" href="index.html">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
@@ -244,7 +251,7 @@
                  
                     <div class="px-6 my-6">
                         <button
-                            class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-emerald-500 border border-transparent rounded-lg active:bg-emerald-500 hover:bg-emerald-700 focus:outline-none focus:shadow-outline-emerald"
+                            class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-amber-500 border border-transparent rounded-lg active:bg-amber-500 hover:bg-amber-700 focus:outline-none focus:shadow-outline-amber"
                         >
                             Cerrar Sesion
                             <span class="ml-2" aria-hidden="true">+</span>
@@ -254,23 +261,23 @@
             </aside>
             <div class="flex flex-col flex-1 w-full">
                 <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
-                    <div class="container flex items-center justify-between h-full px-6 mx-auto text-emerald-600 dark:text-emerald-300">
+                    <div class="container flex items-center justify-between h-full px-6 mx-auto text-amber-600 dark:text-amber-300">
                         <!-- Mobile hamburger -->
-                        <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-emerald" @click="toggleSideMenu" aria-label="Menu">
+                        <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-amber" @click="toggleSideMenu" aria-label="Menu">
                             <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
                             </svg>
                         </button>
                         <!-- Search input -->
                         <div class="flex justify-center flex-1 lg:mr-32">
-                            <div class="relative w-full max-w-xl mr-6 focus-within:text-emerald-500">
+                            <div class="relative w-full max-w-xl mr-6 focus-within:text-amber-500">
                                 <div class="absolute inset-y-0 flex items-center pl-2">
                                     <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
                                 <input
-                                    class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-emerald-700 focus:outline-none focus:shadow-outline-emerald form-input"
+                                    class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-amber-700 focus:outline-none focus:shadow-outline-amber form-input"
                                     type="text"
                                     placeholder="Buscar"
                                     aria-label="Search"/>
@@ -279,7 +286,7 @@
                         <ul class="flex items-center flex-shrink-0 space-x-6">
                             <!-- Theme toggler -->
                             <li class="flex">
-                                <button class="rounded-md focus:outline-none focus:shadow-outline-emerald-700" @click="toggleTheme" aria-label="Toggle color mode">
+                                <button class="rounded-md focus:outline-none focus:shadow-outline-amber-700" @click="toggleTheme" aria-label="Toggle color mode">
                                     <template x-if="!dark">
                                         <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -299,7 +306,7 @@
                             <!-- Notifications menu -->
                             <li class="relative">
                                 <button
-                                    class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-emerald-900"
+                                    class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-amber-900"
                                     @click="toggleNotificationsMenu"
                                     @keydown.escape="closeNotificationsMenu"
                                     aria-label="Notifications"
@@ -355,7 +362,7 @@
                             </li>
                             <!-- Profile menu -->
                             <li class="relative">
-                                <button class="align-middle rounded-full focus:shadow-outline-emerald focus:outline-none" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
+                                <button class="align-middle rounded-full focus:shadow-outline-amber focus:outline-none" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
                                     <img
                                         class="object-cover w-8 h-8 rounded-full"
                                         src="{{ Storage::url('images/default.png') }}"

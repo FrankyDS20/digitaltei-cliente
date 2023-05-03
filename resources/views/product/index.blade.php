@@ -6,30 +6,25 @@
         <h2 class="col-span-6 md:col-span-3 my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             {{$titulo}}
             <a href="{{route('product.create')}}"
-                class=" items-center mt-3 justify-between px-4 py-2 text-sm font-semibold leading-5 text-white transition-colors duration-150 bg-emerald-500 border border-transparent rounded-lg active:bg-emerald-500 hover:bg-emerald-700 focus:outline-none focus:shadow-outline-emerald">
+                class=" items-center mt-3 justify-between px-4 py-2 text-sm font-semibold leading-5 text-white transition-colors duration-150 bg-amber-500 border border-transparent rounded-lg active:bg-amber-500 hover:bg-amber-700 focus:outline-none focus:shadow-outline-amber">
                 Nuevo
-                
             </a>
         </h2>
     </div>
-   
     <!-- New Table -->
     <div class="w-full overflow-hidden bg-white dark:bg-gray-800 rounded-lg text-gray-500  shadow-xs dark:text-gray-400">
-        
-        
         <div class="w-full overflow-x-auto ">
-            
             <table class="w-full whitespace-no-wrap display">
                 <thead>
                     <tr class="text-xs  font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                         <th class="px-4 py-3">Nombre</th>
-                        <th class="px-4 py-3">DNI</th>
-                        <th class="px-4 py-3">Correo</th>
-                        {{-- <th class="px-4 py-3">Direccion</th> --}}
-                        <th class="px-4 py-3">Numero</th>
-                        {{-- <th class="px-4 py-3">Genero</th> --}}
-                        <th class="px-4 py-3">F.Nacimiento</th>
-                        <th class="px-4 py-3">Documento</th>
+                        <th class="px-4 py-3">Descripción </th>
+                        <th class="px-4 py-3">Precio </th>
+                        <th class="px-4 py-3">Presentación</th>
+                        <th class="px-4 py-3">Estado</th>
+                        <th class="px-4 py-3">Marca</th>
+                        <th class="px-4 py-3">Subcategoría</th>
+                        <th class="px-4 py-3">Tipo</th>
                         <th class="px-4 py-3 text-center no-export">Opciones</th>
                     </tr>
                 </thead>
@@ -40,49 +35,42 @@
                             <div class="flex items-center text-sm">
                                 <!-- Avatar with inset shadow -->
                                 <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                    <img class="object-cover w-full h-full rounded-full" src="{{ Storage::url($value->avatar) }}"/>
+                                    <img class="object-cover w-full h-full rounded-full border" src="{{ Storage::url($value->image) }}"/>
                                     <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                 </div>
                                 <div>
-                                    <p class="font-semibold">{{$value->name}} {{$value->lastname}}</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">
-                                        - {{$value->job_name}}
+                                    <p class="font-semibold">{{$value->name}} </p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 ">
+                                        {{-- - {{$value->description}} --}}
                                     </p>
                                 </div>
                             </div>
                         </td>
+                        <td class="px-4 py-3 text-sm truncate">
+                            {{$value->description}}
+                        </td>
                         <td class="px-4 py-3 text-sm">
-                            <button class="px-2 py-1 text-xs font-semibold leading-tight text-black bg-gray-300 rounded-full " onclick="copyText('{{$value->document}}')" title="Copiar">{{$value->document}}</button>
+                            {{$value->price}}
                         </td>
-                        <td class="px-4 py-3 text-xs">
-                            <button class="px-2 py-1 text-xs font-semibold leading-tight text-black bg-gray-300 rounded-full " onclick="copyText('{{$value->email}}')" title="Copiar">{{$value->email}}</button>
+                        <td class="px-4 py-3 text-sm">
+                            {{$value->presentation}}
                         </td>
-                       
-                        <td class="px-4 py-3 text-sm ">
-                            <button class="px-2 py-1 text-xs font-semibold leading-tight text-black bg-gray-300 rounded-full " onclick="copyText('{{$value->phone}}')" title="Copiar">{{$value->phone}}</button>
-
-                            
+                        <td class="px-4 py-3 text-sm">
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full  {{ $value->status ? 'bg-lime-600 text-white dark:text-white dark:bg-lime-600 ' : 'bg-red-500  text-white dark:text-white dark:bg-red-600 ' }}">
+                                {{ $value->status ? 'Active' : 'Inactive' }}
+                            </span>
                         </td>
-              
-                        <td class="px-4 py-3 text-sm ">
-                            {{ \Carbon\Carbon::parse($value->birthday_date)->format('d/m/Y') }}
+                        <!-- <td class="px-4 py-3 text-sm">
+                            {{$value->utility}}
+                        </td> -->
+                        <td class="px-4 py-3 text-sm">
+                            {{$value->brand_name}}
                         </td>
-                        <td class="px-4 py-3 text-sm text-center no-export">
-                            @if($value->file != null)
-                            @if (strpos($value->file, '.pdf') !== false)
-                                <a href="{{ Storage::url($value->file) }}" class="bg-red-500 text-xs hover:bg-red-600 text-white font-bold p-2  text-center rounded" download>
-                                    <i class="fas fa-download"></i> PDF
-                                </a>
-                            @elseif (strpos($value->file, '.doc') !== false)
-                                <a href="{{ Storage::url($value->file) }}" class="bg-blue-500 text-xs hover:bg-blue-600 text-white font-bold p-2  text-center rounded" download>
-                                    <i class="fas fa-download"></i> Word
-                                </a>
-                            @endif
-                            @else
-                                <button disabled class=" text-xs text-black bg-gray-300 p-2 text-center rounded" title="Sin archivo">
-                                    <i class="fas fa-download"></i> Sin registro
-                                </button>
-                            @endif
+                        <td class="px-4 py-3 text-sm">
+                            {{$value->subcategory_name}}
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                            {{$value->type_name}}
                         </td>
                         <td class="px-4 py-3 text-sm text-center no-export">
                             <a href ="{{route('product.edit',$value)}}"  style=" border: none;" 
@@ -97,10 +85,7 @@
                             text-sm font-medium leading-5 text-gray-700 hover:text-gray-900 transition-colors duration-150 dark:text-gray-400 rounded">
                                 <i class="fas fa-trash-alt"></i> </button>
                             {!! Form::close() !!}
-   
                         </td>
-                        
-                       
                     </tr>
                     @endforeach
 

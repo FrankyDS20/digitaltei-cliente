@@ -30,10 +30,10 @@
                         {{-- <th class="px-4 py-3">Genero</th> --}}
                         <th class="px-4 py-3">F.Nacimiento</th>
                         <th class="px-4 py-3">Documento</th>
-                        <th class="px-4 py-3 text-center no-export">Opciones</th>
+                        <!-- <th class="px-4 py-3 text-center no-export">Opciones</th> -->
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                {{-- <!-- <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     @foreach($employee as $value)
                     <tr class="text-gray-700 dark:text-gray-400">
                         <td class="px-4 py-3">
@@ -85,26 +85,22 @@
                             @endif
                         </td>
                         <td class="px-4 py-3 text-sm text-center no-export">
+                       
+                            {!! Form::open(['route' => ['employee.destroy', $value], 'method' => 'delete']) !!}
                             <a href ="{{route('employee.edit',$value)}}"  style=" border: none;" 
                             class="p-2 focus:outline-none focus:shadow-outline-gray
                              editar text-sm font-medium leading-5 text-gray-700
                               hover:text-gray-900 transition-colors duration-150
                                dark:text-gray-400 rounded"><i class="fas fa-edit"></i></a>
-                            
-                            {!! Form::open(['route' => ['employee.destroy', $value], 'method' => 'delete']) !!}
-                            @csrf
-                            <button type="submit" class="p-2 focus:outline-none focus:shadow-outline-gray eliminar 
-                            text-sm font-medium leading-5 text-gray-700 hover:text-gray-900 transition-colors duration-150 dark:text-gray-400 rounded">
+                            <button type="button"  class="p-2 focus:outline-none focus:shadow-outline-gray eliminar 
+                                text-sm font-medium leading-5 text-gray-700 hover:text-gray-900 transition-colors duration-150 dark:text-gray-400 rounded">
                                 <i class="fas fa-trash-alt"></i> </button>
+                                @csrf
                             {!! Form::close() !!}
-   
                         </td>
-                        
-                       
                     </tr>
                     @endforeach
-
-                </tbody>
+                </tbody> --> --}}
             </table>
         </div>
       
@@ -123,7 +119,21 @@
 	second: 'numeric'
  }).replace(',', '').replace(/\//g, '-');
     $('table.display').DataTable({
-
+        "ajax":"{{route('datatable.employee)}}",
+        "columns": [
+        { data: 'id', name: 'id' },
+        { data: 'name', name: 'name' },
+        { data: 'description', name: 'description' },
+        { data: 'price', name: 'price' },
+        { data: 'presentation', name: 'presentation' },
+        { data: 'status', name: 'status' },
+        { data: 'slug', name: 'slug' },
+        { data: 'image', name: 'image' },
+        // { data: 'utility', name: 'utility' },
+        { data: 'brand_name', name: 'brand_name' },
+        { data: 'subcategory_name', name: 'subcategory_name' },
+        { data: 'type_name', name: 'type_name' }
+    ],
         "paging": true,
 		"lengthChange": true,
 		"searching": true,
@@ -231,10 +241,53 @@
     }
 	});
 
+    $(document).on('click', '.eliminar', function () {
+        Swal.fire({
+            title: 'Eliminar Empleado',
+            text: "¿Esta seguro de eliminar este registro?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let id = $(this).attr('id');
+                deleteFila(id);
+            }
+        })
+    });
 
-
-
-
+    function deleteFila(id) {
+        Empleado= {"id" : id};
+    $.ajax({
+        type: "post",
+        url:"{{route('employee.destroy',':id')}}".replace(':id', Empleado),
+        type: 'DELETE',
+        cache: false,
+        timeout: 600000,
+        success: function (response) {
+            var jsonData = JSON.parse(response);
+            if (jsonData.statusCode == 200) {
+                Swal.fire({
+                icon: 'success',
+                title: 'Se ha eliminado el registro',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            }else
+            {
+                Swal.fire({
+                icon: 'error',
+                title: jsonData.error,
+                showConfirmButton: false,
+                timer: 1500
+            });
+            }    
+        },
+    }).fail(function () {
+    });
+}
 
 
     function copyText(text) {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73256916644e1ac01d1c1ce7cc354648",
+    "content-hash": "b68f2b1dbc16638d6747b165d3ea208d",
     "packages": [
         {
             "name": "brick/math",
@@ -5981,16 +5981,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v10.3.0",
+            "version": "v10.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "9fda9c7d6da15deeb5f179e307936edc91390b9f"
+                "reference": "2e641c3a5d4414dc2b0fce89ab0c74d73fbf7eb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/9fda9c7d6da15deeb5f179e307936edc91390b9f",
-                "reference": "9fda9c7d6da15deeb5f179e307936edc91390b9f",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/2e641c3a5d4414dc2b0fce89ab0c74d73fbf7eb3",
+                "reference": "2e641c3a5d4414dc2b0fce89ab0c74d73fbf7eb3",
                 "shasum": ""
             },
             "require": {
@@ -6003,12 +6003,13 @@
             },
             "require-dev": {
                 "nunomaduro/larastan": "^2.4",
-                "orchestra/testbench": "^7.21",
+                "orchestra/testbench": "^8",
                 "yajra/laravel-datatables-html": "^9.3.4|^10"
             },
             "suggest": {
                 "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTables.",
                 "yajra/laravel-datatables-editor": "Plugin to use DataTables Editor (requires a license).",
+                "yajra/laravel-datatables-export": "Plugin for server-side exporting using livewire and queue worker.",
                 "yajra/laravel-datatables-fractal": "Plugin for server-side response using Fractal.",
                 "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTables."
             },
@@ -6052,23 +6053,15 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/laravel-datatables/issues",
-                "source": "https://github.com/yajra/laravel-datatables/tree/v10.3.0"
+                "source": "https://github.com/yajra/laravel-datatables/tree/v10.4.0"
             },
             "funding": [
                 {
-                    "url": "https://www.paypal.me/yajra",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/yajra",
+                    "url": "https://github.com/sponsors/yajra",
                     "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/yajra",
-                    "type": "patreon"
                 }
             ],
-            "time": "2023-02-07T04:05:19+00:00"
+            "time": "2023-03-28T07:33:58+00:00"
         }
     ],
     "packages-dev": [

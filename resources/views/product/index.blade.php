@@ -1,253 +1,452 @@
-@extends('layouts.base')
-@section('content')
+@extends('layouts.base') @prepend('styles') @section('content') 
 
-<div class="container px-6 mx-auto grid">
-    <div class="grid grid-cols-6">
-        <h2 class="col-span-6 md:col-span-3 my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            {{$titulo}}
-            <a href="{{route('product.create')}}"
-                class=" items-center mt-3 justify-between px-4 py-2 text-sm font-semibold leading-5 text-white transition-colors duration-150 bg-amber-500 border border-transparent rounded-lg active:bg-amber-500 hover:bg-amber-700 focus:outline-none focus:shadow-outline-amber">
-                Nuevo
-            </a>
-        </h2>
-    </div>
-    <!-- New Table -->
-    <div class="w-full overflow-hidden bg-white dark:bg-gray-800 rounded-lg text-gray-500  shadow-xs dark:text-gray-400">
-        <div class="w-full overflow-x-auto ">
-            <table class="w-full whitespace-no-wrap display">
-                <thead>
-                    <tr class="text-xs  font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">Nombre</th>
-                        <th class="px-4 py-3">Descripción </th>
-                        <th class="px-4 py-3">Precio </th>
-                        <th class="px-4 py-3">Presentación</th>
-                        <th class="px-4 py-3">Estado</th>
-                        <th class="px-4 py-3">Marca</th>
-                        <th class="px-4 py-3">Subcategoría</th>
-                        <th class="px-4 py-3">Tipo</th>
-                        <th class="px-4 py-3 text-center no-export">Opciones</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    @foreach($product as $value)
-                    <tr class="text-gray-700 dark:text-gray-400">
-                        <td class="px-4 py-3">
-                            <div class="flex items-center text-sm">
-                                <!-- Avatar with inset shadow -->
-                                <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                    <img class="object-cover w-full h-full rounded-full border" src="{{ Storage::url($value->image) }}"/>
-                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                                </div>
-                                <div>
-                                    <p class="font-semibold">{{$value->name}} </p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400 ">
-                                        {{-- - {{$value->description}} --}}
-                                    </p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-4 py-3 text-sm truncate">
-                            {{$value->description}}
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                            {{$value->price}}
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                            {{$value->presentation}}
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                            <span class="px-2 py-1 text-xs font-semibold rounded-full  {{ $value->status ? 'bg-lime-600 text-white dark:text-white dark:bg-lime-600 ' : 'bg-red-500  text-white dark:text-white dark:bg-red-600 ' }}">
-                                {{ $value->status ? 'Active' : 'Inactive' }}
-                            </span>
-                        </td>
-                        <!-- <td class="px-4 py-3 text-sm">
-                            {{$value->utility}}
-                        </td> -->
-                        <td class="px-4 py-3 text-sm">
-                            {{$value->brand_name}}
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                            {{$value->subcategory_name}}
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                            {{$value->type_name}}
-                        </td>
-                        <td class="px-4 py-3 text-sm text-center no-export">
-                            <a href ="{{route('product.edit',$value)}}"  style=" border: none;" 
-                            class="p-2 focus:outline-none focus:shadow-outline-gray
-                             editar text-sm font-medium leading-5 text-gray-700
-                              hover:text-gray-900 transition-colors duration-150
-                               dark:text-gray-400 rounded"><i class="fas fa-edit"></i></a>
-                            
-                            {!! Form::open(['route' => ['product.destroy', $value], 'method' => 'delete']) !!}
-                            @csrf
-                            <button type="submit" class="p-2 focus:outline-none focus:shadow-outline-gray eliminar 
-                            text-sm font-medium leading-5 text-gray-700 hover:text-gray-900 transition-colors duration-150 dark:text-gray-400 rounded">
-                                <i class="fas fa-trash-alt"></i> </button>
-                            {!! Form::close() !!}
-                        </td>
-                    </tr>
-                    @endforeach
+	<!-- End Header Area -->
+	<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+ 
+  .col-md-5 {
+    position: relative;
+        z-index: 1;
+        margin: 3% auto;
+        max-width: 500px; /* Ajusta el ancho máximo del contenido */
+        max-height: 600px; /* Ajusta el ancho máximo del contenido */
+        padding: 3rem; /* Ajusta el espaciado interno del contenido */
+        background-color: rgba(255, 255, 255, 0.8); /* Ajusta el color de fondo y la opacidad del contenido */
+        border-radius: 8px; /* Ajusta el radio de borde del contenido */
 
-                </tbody>
-            </table>
-        </div>
-      
+  }
+</style>
+	<!-- Start Banner Area -->
+	{{-- <section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>{{$titulo}}</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">TIENDA<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">SERVICIOS</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section> --}}
+  <div class="position-relative overflow-hidden bd-placeholder-img p-3 p-md-5 m-md-3 text-center bg-body-tertiary" style="background-image: url('assets/img/product/productoo2.png'); background-size: cover;  background-position: center;background-repeat: no-repeat;">
+    <div class="col-md-5">
+        <h1 class="display-4 fw-normal">PRODUCTOS</h1>
+        <p class="lead fw-normal">Transformando ideas en soluciones digitales</p>
+        <a class="btn btn-outline-secondary" href="#">INICIAR SESION</a>
     </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>
+	<!-- End Banner Area -->
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-xl-3 col-lg-4 col-md-5">
+				<div class="sidebar-categories">
+					<div class="head" style="background-color: rgba(254, 141, 0);">Categorías</div>
+					<ul class="main-categories" id="categorias">
+					</ul>
+				  </div>
+					{{-- <div class="sidebar-categories">
+					<div class="head" style="background-color: rgba(219, 109, 19, 0.87);">Categorias</div>
+					<ul class="main-categories">
+						<li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								 class="lnr lnr-arrow-right"></span>Categoria 1<span class="number">(53)</span></a>
+							<ul class="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
+							</ul>
+						</li>
+
+					</ul>
+				</div> --}}
+				{{-- <div class="sidebar-filter mt-50">
+					<div class="top-filter-head">Aplicar filtros de busqueda</div>
+					<div class="common-filter">
+						<div class="head">Marcas</div>
+						<form action="#">
+							<ul>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">Asus<span>(29)</span></label></li>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">Gionee<span>(19)</span></label></li>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">Micromax<span>(19)</span></label></li>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Samsung<span>(19)</span></label></li>
+							</ul>
+						</form>
+					</div>
+					<div class="common-filter">
+						<div class="head">Color</div>
+						<form action="#">
+							<ul>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">Black<span>(29)</span></label></li>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">Black
+										Leather<span>(29)</span></label></li>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="blackred" name="color"><label for="blackred">Black
+										with red<span>(19)</span></label></li>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="gold" name="color"><label for="gold">Gold<span>(19)</span></label></li>
+								<li class="filter-list"><input class="pixel-radio" type="radio" id="spacegrey" name="color"><label for="spacegrey">Spacegrey<span>(19)</span></label></li>
+							</ul>
+						</form>
+					</div>
+					<div class="common-filter">
+						<div class="head">Precio</div>
+						<div class="price-range-area">
+							<div id="price-range"></div>
+							<div class="value-wrapper d-flex">
+								<div class="price">Precio:</div>
+								<span>$</span>
+								<div id="lower-value"></div>
+								<div class="to">to</div>
+								<span>$</span>
+								<div id="upper-value"></div>
+							</div>
+						</div>
+					</div>
+				</div> --}}
+			</div>
+			<div class="col-xl-9 col-lg-8 col-md-7">
+				<!-- Start Filter Bar -->
+				<div class="filter-bar d-flex flex-wrap align-items-center">
+					<div class="sorting">
+						<select>
+							<option value="1">Por orden Alfabetico</option>
+							<option value="1">Por precio mayor a menor</option>
+							<option value="1">Por precio de menor a mayor</option>
+						</select>
+					</div>
+					<div class="sorting mr-auto">
+						<select>
+							<option value="1">6</option>
+							<option value="1">10</option>
+						</select>
+					</div>
+					<div class="pagination">
+						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+						<a href="#" class="active">1</a>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+						<a href="#">6</a>
+						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+					</div>
+				</div>
+				<!-- End Filter Bar -->
+				<!-- Start Best Seller -->
+				<section class="lattest-product-area pb-40 category-list">
+					<div id="lista_productos" class="row">
+						<!-- single product -->
+						@foreach($data as $product)
+						<div class="col-lg-4 col-md-6">
+							<div class="single-product">
+                                <img class="img-fluid" src="http://digitaltei.test/storage/{{($product->image)}}" alt="">
+								<div class="product-details">
+									<h6>{{$product->name}}</h6>
+									<div class="price">
+										<h6>{{$product->price}}</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-heart"></span>
+											<p class="hover-text">Wishlist</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-move"></span>
+											<p class="hover-text">view more</p>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					@endforeach
+					
+					<div class="text-center">
+						{{ $data->links('pagination::bootstrap-5') }}
+					</div>
+						
+					</div>
+				</section>
+				<!-- End Best Seller -->
+				<!-- Start Filter Bar -->
+				{{-- <div class="filter-bar d-flex flex-wrap align-items-center">
+					
+					<div class="pagination">
+						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+						<a href="#" class="active">1</a>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+						<a href="#">6</a>
+						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+					</div>
+				</div> --}}
+				<!-- End Filter Bar -->
+			</div>
+		</div>
+	</div>
+
+	<!-- Start related-product Area -->
+	{{-- <section class="related-product-area section_gap">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="section-title">
+						<h1>Ofertas de la semana</h1>
+						<p>Para todos nuestros cliente , tenemos grande ofertas , que esperas registrate y podras aquirir nuestros servicio a un buen precio.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-9">
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{{ asset('assets/img/r1.jpg') }}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{{ asset('assets/img/r2.jpg') }}" alt=""></a>
+                               
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{{ asset('assets/img/r3.jpg') }}" alt=""></a>
+                               
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{{ asset('assets/img/r5.jpg') }}" alt=""></a>
+                               
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{{ asset('assets/img/r6.jpg') }}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{{ asset('assets/img/r7.jpg') }}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{{ asset('assets/img/r9.jpg') }}" alt=""></a>
+                               
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{{ asset('assets/img/r10.jpg') }}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{{ asset('assets/img/r11.jpg') }}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>$189.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="ctg-right">
+						<div class="single-deal">
+							<div class="overlay"></div>
+						<a href="{{route('login.index')}}" target="_blank">
+							<img class="img-fluid d-block mx-auto"  src="{{ asset('assets/img/category/c5.jpg') }}" alt="" >
+								<div class="deal-details">
+									<h6 class="deal-title">Iniciar Sesion</h6>
+								</div>
+							</a>
+							
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> --}}
+
+	<script>
+	  // Hacer la solicitud HTTP a la API
+	  fetch('http://digitaltei.test/api/products/subcategory/{id}')
+		.then(response => response.json())
+		.then(data => {
+		  // Obtener la referencia al contenedor de productos
+		  const listaProductos = document.getElementById('lista_productos');
+	
+		  // Generar el código HTML para cada producto
+		  data.forEach(producto => {
+			const html = `
+			  <div class="col-lg-4 col-md-6">
+				<div class="single-product">
+				  <img class="img-fluid" src="${producto.image}" alt="">
+				  <div class="product-details">
+					<h6>${producto.name}</h6>
+					<div class="price">
+					  <h6>${producto.price}</h6>
+					  <h6 class="l-through">${producto.oldPrice}</h6>
+					</div>
+					<div class="prd-bottom">
+					  <a href="" class="social-info">
+						<span class="ti-bag"></span>
+						<p class="hover-text">add to bag</p>
+					  </a>
+					  <a href="" class="social-info">
+						<span class="lnr lnr-heart"></span>
+						<p class="hover-text">Wishlist</p>
+					  </a>
+					  <a href="" class="social-info">
+						<span class="lnr lnr-sync"></span>
+						<p class="hover-text">compare</p>
+					  </a>
+					  <a href="" class="social-info">
+						<span class="lnr lnr-move"></span>
+						<p class="hover-text">view more</p>
+					  </a>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			`;
+	
+			// Agregar el producto al contenedor
+			listaProductos.innerHTML += html;
+		  });
+		})
+		.catch(error => {
+		  console.error('Error:', error);
+		});
+	</script>
+<script>
+	// Obtener las categorías mediante AJAX
+	fetch('http://digitaltei.test/api/categorias')
+	  .then(response => response.json())
+	  .then(data => {
+		const categorias = document.getElementById('categorias');
+  
+		// Generar el código HTML para cada categoría
+		data.forEach(categoria => {
+			var categoriaRoute = "{{ route('products.by.category', ':id') }}";
+			const categoriaHtml =
+    '<li class="main-nav-list">' +
+    '  <a  href="' + categoriaRoute.replace(':id', categoria.id) + '" >' +
+    '    <span class="lnr lnr-arrow-right"></span>' + categoria.name +
+    '  </a>' +
+    '  <ul class="collapse" id="' + categoria.id + '" data-toggle="collapse" aria-expanded="false" aria-controls="' + categoria.id + '">' +
+    '  </ul>' +
+    '</li>';
+  
+
 
   
-</div>
+		  categorias.innerHTML += categoriaHtml;
+  
+		  // Obtener las subcategorías mediante AJAX
+		  fetch(`http://digitaltei.test/api/subcategories/${categoria.id}`)
+			.then(response => response.json())
+			.then(subcategorias => {
+			  const subcategoriasList = document.getElementById(categoria.id);
+  
+			  // Generar el código HTML para cada subcategoría
+			  subcategorias.forEach(subcategoria => {
+				const subcategoriaHtml = `
+				  <li class="main-nav-list child">
+					<a href="#">${subcategoria.name}<span class="number">(${subcategoria.name})</span></a>
+				  </li>
+				`;
+  
+				subcategoriasList.innerHTML += subcategoriaHtml;
+			  });
+			})
+			.catch(error => {
+			  console.error('Error:', error);
+			});
+		});
+	  })
+	  .catch(error => {
+		console.error('Error:', error);
+	  });
+  </script>
+	<!-- End related-product Area -->
 
-<script>
-          let day = new Date().toLocaleDateString('es-ES', {
-	day: '2-digit',
-	month: '2-digit',
-	year: 'numeric',
-	hour: 'numeric',
-	minute: 'numeric',
-	second: 'numeric'
- }).replace(',', '').replace(/\//g, '-');
-    $('table.display').DataTable({
-
-        "paging": true,
-		"lengthChange": true,
-		"searching": true,
-		"ordering": true,
-		"info": true,
-		"autoWidth": false,
-		"responsive": true,
-		"columnDefs": [{
-			"targets": "no-export",
-			"exportable": false
-		}],
-		dom: 'Bflrtip',
-                language: {
-                "sProcessing":     "Procesando...",
-                "sLengthMenu":     "Mostrar _MENU_ registros",
-                "sZeroRecords":    "No se encontraron resultados",
-                "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix":    "",
-                "sSearch":         "Buscar:",
-                "sUrl":            "",
-                "sInfoThousands":  ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":     "Último",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                },
-                "buttons": {
-                    "copy": "Copiar", // Traducir "Copiar" a "Copiar" en español
-                    "copyTitle": "Copiado al portapapeles",
-                    "copySuccess": {
-                    _: '%d filas copiadas',
-                    1: '1 fila copiada'
-                    }
-                }
-            },
-		buttons: [{
-			extend: 'copy',
-			text: '<i class="fas fa-copy"></i> Copiar',
-			exportOptions: {
-				columns: ':not(.no-export)'
-			}
-		}, {
-			extend: 'excel',
-			text: '<i class="fas fa-file-excel"></i> Excel',
-			exportOptions: {
-				columns: ':not(.no-export)'
-			},
-			filename: "Lista de Empleados generado el "+ day,
-			title: "Detalles de Empleados",
-		}, {
-			extend: 'pdf',
-			text: '<i class="fas fa-file-pdf"></i> PDF',
-			exportOptions: {
-				columns: ':not(.no-export)'
-			},
-			filename: "Lista de Empleados generado el "+ day,
-			title: "Detalles de Empleados",
-			messageBottom: "\n Reporte generado el " + day,
-			header: true,
-			footer: true,
-			customize: function(doc) {
-				doc.styles.title = {
-					fontSize: 16,
-					fontWeight: 'bold',
-					alignment: 'center'
-				};
-				doc.styles.tableHeader = {
-					fontSize: 11,
-					fontWeight: 'bold',
-					fillColor: '#6699cc',
-					color: '#ffffff',
-					alignment: 'center',
-					padding: 5,
-					cellPadding: 5,
-				};
-				doc.styles.table = {
-					fontSize: 10,
-					alignment: 'center',
-					cellPadding: 5,
-					border: '3px solid #646464'
-				};
-			}
-		}, {
-			extend: 'print',
-            orientation: 'landscape',
-            pageSize: 'LEGAL',
-			text: '<i class="fas fa-print"></i> Imprimir',
-			exportOptions: {
-				columns: ':not(.no-export)'
-			},
-			filename: "Lista de Empleados generado el "+ day,
-			title: "Reporte generado el " + day,
-		}, ],
-        rowCallback: function(row, data, index) {
-      $(row).css('background-color', 'transparent');
-    }
-	});
-
-
-
-
-
-
-
-    function copyText(text) {
-      const input = document.createElement('input');
-      input.setAttribute('value', text);
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand('copy');
-      document.body.removeChild(input);
-      const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 2000,
-  timerProgressBar: false,
-  didOpen: (toast) => {
-    toast.addEventListener('mouseenter', Swal.stopTimer)
-    toast.addEventListener('mouseleave', Swal.resumeTimer)
-  }
- })
-
-    Toast.fire({
-    icon: 'success',
-    title: 'Copiado correctamente'
-    })
-    
-        }
-        $('button.dt-button').removeClass('dt-button');
-
-</script>
-@endsection
+	<!-- start footer Area -->
+    @endsection

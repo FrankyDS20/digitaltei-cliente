@@ -1,436 +1,358 @@
 <!DOCTYPE html>
-<html :class="{ 'theme-dark': dark }" x-data="data()" lang="es">
-    <head>
-        @vite('resources/css/app.css')
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset('/assets/img/logo.png') }}">
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Digitaltei | {{$titulo}}</title>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-        <link href="https://fonts.googleapis.com/css2?family=Atma:wght@600&family=Montserrat:ital,wght@0,800;1,800&display=swap" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css2?family=Atma:wght@600&family=Montserrat:ital,wght@0,800;1,800&display=swap" rel="stylesheet"/>
-        <link rel="stylesheet" href="{{ asset('assets/css/fontawesome-free-6.3.0-web/css/all.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('assets/css/tailwind.output.css') }}"/>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/jszip-2.5.0/dt-1.13.2/af-2.5.2/b-2.3.4/b-html5-2.3.4/b-print-2.3.4/cr-1.6.1/date-1.3.0/fc-4.2.1/fh-3.3.1/kt-2.8.1/r-2.4.0/rg-1.3.0/rr-1.3.2/sc-2.1.0/sb-1.4.0/sp-2.1.1/sl-1.6.0/sr-1.2.1/datatables.min.css"/>
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-        <script src="{{ asset('assets/js/init-alpine.js') }}"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
-        <script src="{{asset('/assets/js/charts-lines.js') }}" defer></script>
-        <script src="{{asset('/assets/js/charts-pie.js') }}" defer></script> 
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.13.2/af-2.5.2/b-2.3.4/b-html5-2.3.4/b-print-2.3.4/cr-1.6.1/date-1.3.0/fc-4.2.1/fh-3.3.1/kt-2.8.1/r-2.4.0/rg-1.3.0/rr-1.3.2/sc-2.1.0/sb-1.4.0/sp-2.1.1/sl-1.6.0/sr-1.2.1/datatables.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/jszip-2.5.0/dt-1.13.2/af-2.5.2/b-2.3.4/b-html5-2.3.4/b-print-2.3.4/cr-1.6.1/date-1.3.0/fc-4.2.1/fh-3.3.1/kt-2.8.1/r-2.4.0/rg-1.3.0/rr-1.3.2/sc-2.1.0/sb-1.4.0/sp-2.1.1/sl-1.6.0/sr-1.2.1/datatables.min.js"></script>
-        <link rel="stylesheet" href="{{ asset('assets/css/modificacion.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('assets/css/datatables-taillwind.css') }}"/>
-        
+<html lang="zxx" class="no-js">
+   <head>
+      <link rel="shortcut icon" type="image/x-icon" href="{{asset('/assets/img/logo.png') }}">
+      <title>Digitaltei | {{$titulo}}</title>
+      <!-- Mobile Specific Meta -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Favicon-->
+      <link rel="shortcut icon" href="img/fav.png">
+      <!-- Author Meta -->
+      <meta name="author" content="CodePixar">
+      <!-- Meta Description -->
+      <meta name="description" content="">
+      <!-- Meta Keyword -->
+      <meta name="keywords" content="">
+      <!-- meta character set -->
+      <meta charset="UTF-8">
+      <!-- Site Title -->
+      <title>Karma Shop</title>
+      <!--
+         CSS
+         ============================================= -->
+		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+      <link rel="stylesheet" href="{{ asset('assets/css/linearicons.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('assets/css/themify-icons.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('assets/css/nouislider.min.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('assets/css/ion.rangeSlider.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('assets/css/ion.rangeSlider.skinFlat.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}"/>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+      <script src="{{asset('/assets/js/vendor/jquery-2.2.4.min.js') }}" defer></script> 
+      <script src="{{asset('/assets/js/vendor/bootstrap.min.js') }}" defer></script> 
+      <script src="{{asset('/assets/js/jquery.ajaxchimp.min.js') }}" defer></script> 
+      <script src="{{asset('/assets/js/jquery.nice-select.min.js') }}" defer></script> 
+      <script src="{{asset('/assets/js/jquery.sticky.js') }}" defer></script> 
+      <script src="{{asset('/assets/js/nouislider.min.js') }}" defer></script> 
+      <script src="{{asset('/assets/js/countdown.js') }}" defer></script> 
+      <script src="{{asset('/assets/js/jquery.magnific-popup.min.js') }}" defer></script> 
+      <script src="{{asset('/assets/js/owl.carousel.min.js') }}" defer></script> 
+      <script src="{{asset('/assets/js/gmaps.min.js') }}" defer></script> 
+      <script src="{{asset('/assets/js/main.js') }}" defer></script> 
+      {{-- <script src="{{asset('/assets/assets/js/color-modes.js') }}"></script> --}}
+      {{-- 
+      <link href="{{asset('/assets/assets/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+      --}}
+      <script src="{{asset('/assets/assets/dist/js/bootstrap.bundle.min.js') }}"></script>
+      <link href="{{asset('/assets/css/carousel.css') }}" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+         crossorigin="anonymous"></script>
+      <!--gmaps Js-->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+   </head>
+   <body>
+      <!-- Start Header Area -->
+      <header class="header_area sticky-header">
+		<div class="main_menu">
+		   <nav class="navbar navbar-expand-lg navbar-light main_box">
+			  <div class="container">
+				 <!-- Brand and toggle get grouped for better mobile display -->
+				 <a class="navbar-brand logo_h" href="index.html"><img width="50" height="55" src="{{asset('/assets/img/logo.png') }}" alt=""> DIGIALTEI</a>
+				 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				 <span class="icon-bar"></span>
+				 <span class="icon-bar"></span>
+				 <span class="icon-bar"></span>
+				 </button>
+				 <!-- Collect the nav links, forms, and other content for toggling -->
+				 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+					<ul class="nav navbar-nav menu_nav ml-auto">
+					   <li id="inicio" class="nav-item"><a class="nav-link" href="{{route('home')}}">INICIO</a></li>
+					   <li class="nav-item submenu dropdown">
+						  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+							 aria-expanded="false">TIENDA</a>
+						  <ul class="dropdown-menu">
+							 <li class="nav-item"><a class="nav-link" href="{{route('servic.index')}}">Servicios</a></li>
+							 <li class="nav-item"><a class="nav-link" href="{{route('product.index')}}">Productos</a></li>
+						  </ul>
+					   </li>
+					   <li id="nosotros" class="nav-item "><a class="nav-link" href="{{route('about.index')}}">NOSOTROS</a></li>
+					  
+					   <li id="contactanos" class="nav-item "><a class="nav-link" href="{{route('contact.index')}}">CONTACTANOS</a></li>
+					  
+					   <li id="login" class="nav-item "><button class="nav-link" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >LOGIN</button></li>
+					  
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+					   <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+					   <li class="nav-item">
+						  <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+					   </li>
+					</ul>
+				 </div>
+			  </div>
+		   </nav>
+		</div>
+		</div>
+	 </header> 
 
-    </head>
-    <body>
-        <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
-            <!-- Desktop sidebar -->
-            <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
-                <div class="py-4 text-gray-500 dark:text-gray-400">
-                    <div class="flex">
-                        <img style="" src="{{asset('/assets/img/logo.png') }}" class="h-7 ml-6" alt="Logo de la farmacia">
-                        <h1 class="ml-1 text-lg  font-bold text-gray-800 dark:text-gray-200" href="#">
-                          {{$empresa}}
-                        </h1>
-                      </div>
-                    
-                    <ul class="mt-6">
-                        <li class="relative px-6 py-3">
-                            @if (Route::is('home'))
-                            <span class="absolute inset-y-0 left-0 w-1 bg-amber-500 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
-                            @endif
-                            <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800
-                             transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100" href="{{route('home')}}">
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                                </svg>
-                                <span class="ml-4">Inicio</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li class="relative px-6 py-3  @if(request()->routeIs('employee.index')) active @endif">
-                            @if (Route::is('employee.index'))
-                            <span class="absolute inset-y-0 left-0 w-1 bg-amber-500 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
-                            @endif
-                            <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" @click="togglePagesMenu" aria-haspopup="true">
-                                <span class="inline-flex items-center">
-                                    <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path
-                                            d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
-                                        ></path>
-                                    </svg>
-                                    <span class="ml-4">Administracion</span>
-                                </span>
-                                <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                            <template x-if="isPagesMenuOpen">
-                                <ul
-                                    x-transition:enter="transition-all ease-in-out duration-300"
-                                    x-transition:enter-start="opacity-25 max-h-0"
-                                    x-transition:enter-end="opacity-100 max-h-xl"
-                                    x-transition:leave="transition-all ease-in-out duration-300"
-                                    x-transition:leave-start="opacity-100 max-h-xl"
-                                    x-transition:leave-end="opacity-0 max-h-0"
-                                    class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
-                                    aria-label="submenu">
-                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="{{route('employee.index')}}">Personal</a>
-                                    </li>
-                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="pages/create-account.html">
-                                            Usuarios
-                                        </a>
-                                    </li>
-                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="pages/create-account.html">
-                                            Monitoreo
-                                        </a>
-                                    </li>
-                                </ul>
-                            </template>
-                        </li>
-                        <li class="relative px-6 py-3">
-                            @if (Route::is('product.index'))
-                            <span class="absolute inset-y-0 left-0 w-1 bg-amber-500 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
-                            @endif
-                            <a href="{{route('product.index')}}"  class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-                                </svg>
-                                <span class="ml-4">Productos</span>
-                            </a>
-                        </li>
-                        <li class="relative px-6 py-3">
-                           
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                                </svg>
-                                <span class="ml-4">Compras</span>
-                            </a>
-                        </li>
-                        <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
-                                </svg>
-                                <span class="ml-4">Ventas</span>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                    <div class="px-6 my-6">
-                        <button
-                            class="flex  items-center justify-between w-full px-4 py-2 text-sm font-semibold leading-5 text-white transition-colors duration-150 bg-amber-500 border border-transparent rounded-lg active:bg-amber-500 hover:bg-amber-700 focus:outline-none focus:shadow-outline-amber">
-                            Cerrar sesion <i class=" ml-2 fa-solid fa-power-off"></i>
-                        </button>
-                    </div>
-                </div>
-        </aside>
-            <!-- Mobile sidebar -->
-            <!-- Backdrop -->
-            <div
-                x-show="isSideMenuOpen"
-                x-transition:enter="transition ease-in-out duration-150"
-                x-transition:enter-start="opacity-0"
-                x-transition:enter-end="opacity-100"
-                x-transition:leave="transition ease-in-out duration-150"
-                x-transition:leave-start="opacity-100"
-                x-transition:leave-end="opacity-0"
-                class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
-            ></div>
-            <aside
-                class="fixed inset-y-0 z-20 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden"
-                x-show="isSideMenuOpen"
-                x-transition:enter="transition ease-in-out duration-150"
-                x-transition:enter-start="opacity-0 transform -translate-x-20"
-                x-transition:enter-end="opacity-100"
-                x-transition:leave="transition ease-in-out duration-150"
-                x-transition:leave-start="opacity-100"
-                x-transition:leave-end="opacity-0 transform -translate-x-20"
-                @click.away="closeSideMenu"
-                @keydown.escape="closeSideMenu">
-                <div class="py-4 text-gray-500 dark:text-gray-400">
-                    <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
-                        {{$empresa}}
-                    </a>
-                    <ul class="mt-6">
-                        <li class="relative px-6 py-3">
-                            <span class="absolute inset-y-0 left-0 w-1 bg-amber-500 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
-                            <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100" href="index.html">
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                                </svg>
-                                <span class="ml-4">Inicio</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul>
-                        
-                        <li class="relative px-6 py-3">
-                            <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" @click="togglePagesMenu" aria-haspopup="true">
-                                <span class="inline-flex items-center">
-                                    <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path
-                                            d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
-                                        ></path>
-                                    </svg>
-                                    <span class="ml-4">Administracion</span>
-                                </span>
-                                <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                            <template x-if="isPagesMenuOpen">
-                                <ul
-                                    x-transition:enter="transition-all ease-in-out duration-300"
-                                    x-transition:enter-start="opacity-25 max-h-0"
-                                    x-transition:enter-end="opacity-100 max-h-xl"
-                                    x-transition:leave="transition-all ease-in-out duration-300"
-                                    x-transition:leave-start="opacity-100 max-h-xl"
-                                    x-transition:leave-end="opacity-0 max-h-0"
-                                    class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
-                                    aria-label="submenu">
-                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="{{route('employee.index')}}">Personal</a>
-                                    </li>
-                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="pages/create-account.html">
-                                            Usuarios
-                                        </a>
-                                    </li>
-                                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="pages/create-account.html">
-                                            Monitoreo
-                                        </a>
-                                    </li>
-                                   
-                                </ul>
-                            </template>
-                        </li>
-                        <li class="relative px-6 py-3">
-                            <a href="{{route('product.index')}}" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-                                </svg>
-                                <span class="ml-4">Productos</span>
-                            </a>
-                        </li>
-                        <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                                </svg>
-                                <span class="ml-4">Compras</span>
-                            </a>
-                        </li>
-                        <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" >
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
-                                </svg>
-                                <span class="ml-4">Ventas</span>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                 
-                    <div class="px-6 my-6">
-                        <button
-                            class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-amber-500 border border-transparent rounded-lg active:bg-amber-500 hover:bg-amber-700 focus:outline-none focus:shadow-outline-amber"
-                        >
-                            Cerrar Sesion
-                            <span class="ml-2" aria-hidden="true">+</span>
-                        </button>
-                    </div>
-                </div>
-            </aside>
-            <div class="flex flex-col flex-1 w-full">
-                <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
-                    <div class="container flex items-center justify-between h-full px-6 mx-auto text-amber-600 dark:text-amber-300">
-                        <!-- Mobile hamburger -->
-                        <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-amber" @click="toggleSideMenu" aria-label="Menu">
-                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                        <!-- Search input -->
-                        <div class="flex justify-center flex-1 lg:mr-32">
-                            <div class="relative w-full max-w-xl mr-6 focus-within:text-amber-500">
-                                <div class="absolute inset-y-0 flex items-center pl-2">
-                                    <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <input
-                                    class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-amber-700 focus:outline-none focus:shadow-outline-amber form-input"
-                                    type="text"
-                                    placeholder="Buscar"
-                                    aria-label="Search"/>
-                            </div>
-                        </div>
-                        <ul class="flex items-center flex-shrink-0 space-x-6">
-                            <!-- Theme toggler -->
-                            <li class="flex">
-                                <button class="rounded-md focus:outline-none focus:shadow-outline-amber-700" @click="toggleTheme" aria-label="Toggle color mode">
-                                    <template x-if="!dark">
-                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                                        </svg>
-                                    </template>
-                                    <template x-if="dark">
-                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                                                clip-rule="evenodd"
-                                            ></path>
-                                        </svg>
-                                    </template>
-                                </button>
-                            </li>
-                            <!-- Notifications menu -->
-                            <li class="relative">
-                                <button
-                                    class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-amber-900"
-                                    @click="toggleNotificationsMenu"
-                                    @keydown.escape="closeNotificationsMenu"
-                                    aria-label="Notifications"
-                                    aria-haspopup="true"
-                                >
-                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
-                                    </svg>
-                                    <!-- Notification badge -->
-                                    <span aria-hidden="true" class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"></span>
-                                </button>
-                                <template x-if="isNotificationsMenuOpen">
-                                    <ul
-                                        x-transition:leave="transition ease-in duration-150"
-                                        x-transition:leave-start="opacity-100"
-                                        x-transition:leave-end="opacity-0"
-                                        @click.away="closeNotificationsMenu"
-                                        @keydown.escape="closeNotificationsMenu"
-                                        class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:text-gray-300 dark:border-gray-700 dark:bg-gray-700"
-                                    >
-                                        <li class="flex">
-                                            <a
-                                                class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                                href="#"
-                                            >
-                                                <span>Messages</span>
-                                                <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-600 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-600">
-                                                    13
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="flex">
-                                            <a
-                                                class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                                href="#"
-                                            >
-                                                <span>Sales</span>
-                                                <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-600 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-600">
-                                                    2
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="flex">
-                                            <a
-                                                class="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                                href="#"
-                                            >
-                                                <span>Alerts</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </template>
-                            </li>
-                            <!-- Profile menu -->
-                            <li class="relative">
-                                <button class="align-middle rounded-full focus:shadow-outline-amber focus:outline-none" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
-                                    <img
-                                        class="object-cover w-8 h-8 rounded-full"
-                                        src="{{ Storage::url('images/default.png') }}"
-                                        alt=""
-                                        aria-hidden="true"/>
-                                </button>
-                                <template x-if="isProfileMenuOpen">
-                                    <ul
-                                        x-transition:leave="transition ease-in duration-150"
-                                        x-transition:leave-start="opacity-100"
-                                        x-transition:leave-end="opacity-0"
-                                        @click.away="closeProfileMenu"
-                                        @keydown.escape="closeProfileMenu"
-                                        class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
-                                        aria-label="submenu"
-                                    >
-                                        <li class="flex">
-                                            <a
-                                                class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                                href="#"
-                                            >
-                                                <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                                </svg>
-                                                <span>Profile</span>
-                                            </a>
-                                        </li>
-                                        <li class="flex">
-                                            <a
-                                                class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                                href="#"
-                                            >
-                                                <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path
-                                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                                                    ></path>
-                                                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                                </svg>
-                                                <span>Settings</span>
-                                            </a>
-                                        </li>
-                                        <li class="flex">
-                                            <a
-                                                class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                                href="#"
-                                            >
-                                                <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
-                                                </svg>
-                                                <span>Log out</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </template>
-                            </li>
-                        </ul>
-                    </div>
-                </header>
-                <main class="h-full overflow-y-auto fondo">
-            @yield('content')
 
-                  
-                </main>
+      @yield('content')
+      <!-- start footer Area -->
+      {{-- <footer class="footer-area section_gap">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-3  col-md-6 col-sm-6">
+                  <div class="single-footer-widget">
+                     <h6>About Us</h6>
+                     <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
+                        magna aliqua.
+                     </p>
+                  </div>
+               </div>
+               <div class="col-lg-4  col-md-6 col-sm-6">
+                  <div class="single-footer-widget">
+                     <h6>Newsletter</h6>
+                     <p>Stay update with our latest</p>
+                     <div class="" id="mc_embed_signup">
+                        <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                           method="get" class="form-inline">
+                           <div class="d-flex flex-row">
+                              <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+                                 required="" type="email">
+                              <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                              <div style="position: absolute; left: -5000px;">
+                                 <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                              </div>
+                              <!-- <div class="col-lg-4 col-md-4">
+                                 <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
+                                 </div>  -->
+                           </div>
+                           <div class="info"></div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3  col-md-6 col-sm-6">
+                  <div class="single-footer-widget mail-chimp">
+                     <h6 class="mb-20">Instragram Feed</h6>
+                     <ul class="instafeed d-flex flex-wrap">
+                        <li><img src="{{ asset('assets/img/i1.jpg')}}" alt=""></li>
+                        <li><img src="{{ asset('assets/img/i2.jpg')}}" alt=""></li>
+                        <li><img src="{{ asset('assets/img/i3.jpg')}}" alt=""></li>
+                        <li><img src="{{ asset('assets/img/i4.jpg')}}" alt=""></li>
+                        <li><img src="{{ asset('assets/img/i5.jpg')}}" alt=""></li>
+                        <li><img src="{{ asset('assets/img/i6.jpg')}}" alt=""></li>
+                        <li><img src="{{ asset('assets/img/i7.jpg')}}" alt=""></li>
+                        <li><img src="{{ asset('assets/img/i8.jpg')}}" alt=""></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-lg-2 col-md-6 col-sm-6">
+                  <div class="single-footer-widget">
+                     <h6>Follow Us</h6>
+                     <p>Let us be social</p>
+                     <div class="footer-social d-flex align-items-center">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-        @section('js')
-        
-        @endsection
-    </body>
+            <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+               <p class="footer-text m-0">
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+               </p>
+            </div>
+         </div>
+      </footer> --}}
+
+	  <div class="w-100 ">
+		<footer class="py-5 bg-dark text-light p-5">
+		  <div class="row">
+			<div class="col-6 col-md-2 mb-3">
+			  <h5>Section</h5>
+			  <ul class="nav flex-column">
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Home</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Features</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Pricing</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">FAQs</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">About</a></li>
+			  </ul>
+			</div>
+	  
+			<div class="col-6 col-md-2 mb-3">
+			  <h5>Section</h5>
+			  <ul class="nav flex-column">
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Home</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Features</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Pricing</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">FAQs</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">About</a></li>
+			  </ul>
+			</div>
+	  
+			<div class="col-6 col-md-2 mb-3">
+			  <h5>Section</h5>
+			  <ul class="nav flex-column">
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Home</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Features</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Pricing</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">FAQs</a></li>
+				<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">About</a></li>
+			  </ul>
+			</div>
+	  
+			<div class="col-md-4 offset-md-1 mb-3">
+			  <form>
+				<h5>Subscribe to our newsletter</h5>
+				<p>Monthly digest of what's new and exciting from us.</p>
+				<div class="d-flex flex-column flex-sm-row w-100 gap-2">
+				  <label for="newsletter1" class="visually-hidden">Email address</label>
+				  <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+				  <button class="btn btn-primary" type="button">Subscribe</button>
+				</div>
+			  </form>
+			</div>
+		  </div>
+	  
+		  <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+			<p>© 2023 Company, Inc. All rights reserved.</p>
+			<ul class="list-unstyled d-flex">
+			  <li class="ms-3"><a class="link-body-emphasis h3" href="#"><i class="bi bi-instagram text-light" width="100" height="100" ></i></a></li>
+			  <li class="ms-3"><a class="link-body-emphasis h3" href="#"><i class="bi bi-facebook text-light" width="30" height="30" ></i></a></li>
+			  <li class="ms-3"><a class="link-body-emphasis h3" href="#"><i class="bi bi-whatsapp text-light" width="30" height="30" ></i></a></li>
+	
+			</ul>
+		  </div>
+		</footer>
+	  </div>
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header mx-auto">
+                  <h1 class="modal-title fs-5 " id="staticBackdropLabel ">Iniciar Sesion</h1>
+                  {{-- 
+                  <div class="d-flex justify-content-end">
+                     <div class="position-relative">
+                        <div class="position-absolute top-0 end-0">
+                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                     </div>
+                  </div>
+                  --}}
+               </div>
+               <div class="modal-body">
+                  <div class="">
+                     <div class="">
+                        <form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                           <div class="col-md-12 form-group">
+                              <input type="text" class="form-control" id="name" name="name" placeholder="USUARIO" onfocus="this.placeholder = ''" onblur="this.placeholder = 'USUARIO'">
+                           </div>
+                           <div class="col-md-12 form-group">
+                              <input type="text" class="form-control" id="name" name="name" placeholder="CONTRASEÑA" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CONTRASEÑA'">
+                           </div>
+                           <div class="col-md-12 form-group">
+                              <div class="creat_account">
+                                 <input type="checkbox" id="f-option2" name="selector">
+                                 <label for="f-option2">Recordar contraseña</label>
+                              </div>
+                           </div>
+                           <div class="col-md-12 form-group">
+                              <button type="submit" value="submit" class="primary-btn">Iniciar Sesion</button>
+                              <div class="hover">	
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                  {{-- <button type="button" class="btn btn-primary" ="modal">registrar</button> --}}
+                  <button type="button" class="btn btn-primary " class="nav-link " data-bs-toggle="modal" data-bs-target="#staticBackdroc">registrar</button>
+                  {{-- <button class="btn btn-primary" class="nav-link" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >registrar</button> --}}
+                  {{-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Registrar</button> --}}
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Modal 2-->
+      <div class="modal fade" id="staticBackdroc" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header mx-auto">
+                  <h1 class="modal-title fs-5 " id="staticBackdropLabel ">Registrar</h1>
+                  {{-- 
+                  <div class="d-flex justify-content-end">
+                     <div class="position-relative">
+                        <div class="position-absolute top-0 end-0">
+                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                     </div>
+                  </div>
+                  --}}
+               </div>
+               <div class="modal-body">
+                  <div class="">
+                     <div class="">
+                        <form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                           <div class="col-md-12 form-group">
+                              <input type="text" class="form-control" id="name" name="name" placeholder="USUARIO" onfocus="this.placeholder = ''" onblur="this.placeholder = 'USUARIO'">
+                           </div>
+                           <div class="col-md-12 form-group">
+                              <input type="text" class="form-control" id="name" name="name" placeholder="CONTRASEÑA" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CONTRASEÑA'">
+                           </div>
+                           <div class="col-md-12 form-group">
+                              <div class="creat_account">
+                                 <input type="checkbox" id="f-option2" name="selector">
+                                 <label for="f-option2">Recordar contraseña</label>
+                              </div>
+                           </div>
+                           <div class="col-md-12 form-group">
+                              <button type="submit" value="submit" class="primary-btn">Iniciar Sesion</button>
+                              <div class="hover">	
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">crear cuenta</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- End footer Area -->
+      {{-- <script src="{{asset('/assets/js/vendor/bootstrap.min.js') }}" defer></script>  --}}
+      <script src="{{asset('/assets/js/vendor/jquery-2.2.4.min.js') }}" defer></script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+         crossorigin="anonymous"></script>
+      <script src="{{asset('/assets/js/vendor/bootstrap.min.js') }}" ></script>
+      <script src="{{asset('/assets/js/jquery.ajaxchimp.min.js') }}" ></script>
+      <script src="{{asset('/assets/js/jquery.nice-select.min.js') }}" ></script>
+      <script src="{{asset('/assets/js/jquery.sticky.js') }}" ></script>
+      <script src="{{asset('/assets/js/nouislider.min.js') }}" ></script>
+      <script src="{{asset('/assets/js/countdown.js') }}" ></script>
+      <script src="{{asset('/assets/js/jquery.magnific-popup.min.js') }}" ></script>
+      <script src="{{asset('/assets/js/owl.carousel.min.js') }}" ></script>
+      <!--gmaps Js-->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+      <script src="{{asset('/assets/js/gmaps.min.js') }}" ></script>
+      <script src="{{asset('/assets/js/main.js') }}" ></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+   </body>
 </html>

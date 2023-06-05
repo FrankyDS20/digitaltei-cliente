@@ -18,8 +18,14 @@ class ProductController extends Controller
     protected $empresa = "DIGITALTEI";
     public function index()
     {
-        
-        $product = Product::select(
+        $titulo = "Productos";
+        // $empresa = "DIGITALTEI";
+        return view('product.index',compact('titulo'));
+    }
+    public function productbycategory($id)
+    {
+        $subcategories = SubCategory::where('category_id', $id)->pluck('id');
+        $data = Product::select(
             'products.id',
             'products.name',
             'products.description',
@@ -28,7 +34,6 @@ class ProductController extends Controller
             'products.status',
             'products.slug',
             'products.image',
-            // 'products.utility',
             'brands.name as brand_name',
             'sub_categories.name as subcategory_name',
             'types.name as type_name'
@@ -36,13 +41,13 @@ class ProductController extends Controller
         ->join('brands', 'products.brand_id', '=', 'brands.id')
         ->join('sub_categories', 'products.subcategory_id', '=', 'sub_categories.id')
         ->join('types', 'products.type_id', '=', 'types.id')
-        // ->where('products.status', true)
+        ->whereIn('products.subcategory_id', $subcategories)
         ->orderBy('products.id', 'DESC')
-        ->get();
-        // dd($product);
-        $titulo = "Gestion de Productos";
-        $empresa = $this->empresa;
-        return view('product.index', compact('product', 'empresa','titulo',));
+        ->paginate(6);
+
+        $titulo = "Productos";
+        // $empresa = "DIGITALTEI";
+        return view('product.index',compact('titulo','data'));
     }
   
     public function edit(Product $product)

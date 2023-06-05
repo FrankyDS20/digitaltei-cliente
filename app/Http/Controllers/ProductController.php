@@ -19,8 +19,25 @@ class ProductController extends Controller
     public function index()
     {
         $titulo = "Productos";
-        // $empresa = "DIGITALTEI";
-        return view('product.index',compact('titulo'));
+        $data = Product::select(
+            'products.id',
+            'products.name',
+            'products.description',
+            'products.price',
+            'products.presentation',
+            'products.status',
+            'products.slug',
+            'products.image',
+            'brands.name as brand_name',
+            'sub_categories.name as subcategory_name',
+            'types.name as type_name'
+        )
+        ->join('brands', 'products.brand_id', '=', 'brands.id')
+        ->join('sub_categories', 'products.subcategory_id', '=', 'sub_categories.id')
+        ->join('types', 'products.type_id', '=', 'types.id')
+        ->orderBy('products.id', 'DESC')
+        ->paginate(6);// $empresa = "DIGITALTEI";
+        return view('product.index',compact('titulo','data'));
     }
     public function productbycategory($id)
     {
